@@ -182,3 +182,57 @@ FROM   (SELECT N.id,
 GROUP  BY D.id
 HAVING D.sales = Max(D.sales)
 LIMIT  1;
+
+
+SELECT D.id,
+       Max(D.money)
+FROM   (SELECT F.id,
+               F.price * Sum(total) AS money
+        FROM   (SELECT N.id,
+                       B.price,
+                       Sum(quantity) AS total
+                FROM   customer C,
+                       customerorder O,
+                       ordercontents G,
+                       book B,
+                       bookauthor A,
+                       names N
+                WHERE  O.eto = C.eid
+                       AND G.oid = O.id
+                       AND B.isbn = G.bid
+                       AND A.isbn = B.isbn
+                       AND A.nameid = N.id
+                GROUP  BY B.isbn) AS F
+        GROUP  BY F.id) AS D
+
+SELECT DISTINCT E.*
+FROM   customer AS C,
+       entity AS E,
+       customerorder AS O,
+       ordercontents AS G,
+       book AS B,
+       bookauthor A,
+       (SELECT nameid,
+               Max(money)
+        FROM   (SELECT F.nameid,
+                       F.price * Sum(total) AS money
+                FROM   (SELECT A.nameid,
+                               B.price,
+                               Sum(quantity) AS total
+                        FROM   customer AS C,
+                               customerorder AS O,
+                               ordercontents AS G,
+                               book AS B,
+                               bookauthor A
+                        WHERE  O.eto = C.eid
+                               AND G.oid = O.id
+                               AND B.isbn = G.bid
+                               AND B.isbn = A.isbn
+                        GROUP  BY B.isbn) AS F
+                GROUP  BY F.nameid) AS D) AS J
+WHERE  C.eid = O.eto
+       AND C.eid = E.id
+       AND G.oid = O.id
+       AND G.bid = B.isbn
+       AND B.isbn = A.isbn
+       AND A.nameid = J.nameid;
