@@ -134,3 +134,27 @@ WHERE  t.epayer = E.id
 GROUP  BY T.epayer
 HAVING T.amount > (SELECT Avg (amount)
                    FROM   monetarytransaction);
+
+SELECT B.title,
+       Sum(quantity)
+FROM   book AS B,
+       customerorder AS O,
+       ordercontents AS G
+WHERE  G.oid = O.id
+       AND G.bid = B.isbn
+GROUP  BY B.isbn
+ORDER  BY Sum(quantity) DESC;
+
+SELECT B.title,
+       B.price * Sum(G.quantity) AS total
+FROM   customer AS C,
+       monetarytransaction AS T,
+       book AS B,
+       customerorder AS O,
+       ordercontents AS G
+WHERE  T.epayer = C.eid
+       AND T.oid = O.id
+       AND G.oid = O.id
+       AND B.isbn = G.bid
+GROUP  BY B.isbn
+ORDER  BY total DESC;
