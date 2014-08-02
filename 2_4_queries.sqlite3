@@ -1,3 +1,7 @@
+/*
+This finds the titles of all books by an author for under a certain price.
+In this case the author is Pratchett and the price is $10.
+*/
 SELECT DISTINCT B.title,
                 N.lname
 FROM   book B,
@@ -8,6 +12,9 @@ WHERE  b.price < 10.00
        AND N.lname LIKE '%Pratchett'
        AND B.isbn = A.isbn;
 
+/*
+This query will give names and dates of purchases by any customer as chosen by their entity id.
+*/
 SELECT B.title,
        T.timestamp
 FROM   book B,
@@ -19,6 +26,10 @@ WHERE  T.oid = O.id
        AND B.isbn = G.bid
        AND T.epayer = 121;
 
+/*
+Finds ISBNs and titles of books with fewer than a certain number in stock.
+In this example we select the books with less than 5 in stock.
+*/
 SELECT B.title,
        B.isbn,
        I.quantity
@@ -27,6 +38,10 @@ FROM   book B,
 WHERE  I.bid = B.isbn
        AND i.quantity < 5;
 
+/*
+Shows all customers who purchased books by an author and all books by that author they bought.
+In this example we used the author Pratchett.
+*/
 SELECT N.fname,
        N.mname,
        N.lname,
@@ -48,6 +63,10 @@ WHERE  C.eid = T.epayer
        AND E.nameid = N.id
        AND N.lname LIKE '%Pratchett';
 
+/*
+Shows the total number of books a customer purchased.
+The customer is selected by their entity id number.
+*/
 SELECT Sum(quantity)
 FROM   monetarytransaction T,
        customerorder O,
@@ -56,7 +75,10 @@ WHERE  T.epayer = 140
        AND T.id = O.transactionid
        AND G.oid = O.id;
 
-ELECT EidSum.eid,
+/*
+Shows which customer purchased the most books and how many books they have purchased.
+*/
+SELECT EidSum.eid,
        EidSum.total
 FROM   (SELECT C.eid,
                Sum(quantity) AS total
@@ -79,6 +101,9 @@ WHERE  EidSum.total = (SELECT Max(e.total)
                                       AND G.oid = O.id
                                GROUP  BY C.eid) e);
 
+/*
+Shows the number of titles we can sell from a specific author.
+*/
 SELECT Sum(I.quantity)
 FROM   book B,
        bookauthor A,
@@ -89,6 +114,9 @@ WHERE  B.isbn = A.isbn
        AND A.nameid = N.id
        AND N.lname LIKE '%Pratchett';
 
+/*
+Gets an average rating of a given book from all reviews of that book.
+*/
 SELECT Avg(rating)
 FROM   rating
 WHERE  bid = 140077022;
@@ -99,6 +127,9 @@ FROM   rating r
          ON r.bid = b.isbn
 WHERE  r.bid = 140077022;
 
+/*
+Finds the manager with the highest salary.
+*/
 SELECT Max(salary)
 FROM   employee AS E
        JOIN (SELECT emanager AS manager
@@ -109,6 +140,9 @@ FROM   employee AS E
          ON E.eid = M.manager
 WHERE  E.salary IS NOT NULL;
 
+/*
+Gives a list of customer names and the amount they have spent at the store.
+*/
 SELECT N.fname,
        N.mname,
        N.lname,
@@ -122,6 +156,9 @@ WHERE  E.id = C.eid
        AND N.id = E.nameid
 GROUP  BY C.eid;
 
+/*
+Gives names and e-mail addresses of customers who have spent more than the average.
+*/
 SELECT N.fname,
        N.mname,
        N.lname,
@@ -135,6 +172,9 @@ GROUP  BY T.epayer
 HAVING T.amount > (SELECT Avg (amount)
                    FROM   monetarytransaction);
 
+/*
+Shows titles of books ranked from most sold to least.
+*/
 SELECT B.title,
        Sum(quantity)
 FROM   book AS B,
@@ -145,6 +185,9 @@ WHERE  G.oid = O.id
 GROUP  BY B.isbn
 ORDER  BY Sum(quantity) DESC;
 
+/*
+Shows titles by largest grossing to lowest.
+*/
 SELECT B.title,
        B.price * Sum(G.quantity) AS total
 FROM   customer AS C,
@@ -159,6 +202,9 @@ WHERE  T.epayer = C.eid
 GROUP  BY B.isbn
 ORDER  BY total DESC;
 
+/*
+Shows which author has sold the most books.
+*/
 ELECT D.fname,
        D.mname,
        D.lname
@@ -183,7 +229,9 @@ GROUP  BY D.id
 HAVING D.sales = Max(D.sales)
 LIMIT  1;
 
-
+/*
+Find the author who has the largest sales in dollar amount.
+*/
 SELECT D.id,
        Max(D.money)
 FROM   (SELECT F.id,
@@ -205,6 +253,10 @@ FROM   (SELECT F.id,
                 GROUP  BY B.isbn) AS F
         GROUP  BY F.id) AS D
 
+/*
+Show the information of all customers who have purchased a title
+by the author with the largest monetary sales.
+*/
 SELECT DISTINCT E.*
 FROM   customer AS C,
        entity AS E,
@@ -237,6 +289,9 @@ WHERE  C.eid = O.eto
        AND B.isbn = A.isbn
        AND A.nameid = J.nameid;
 
+/*
+List of authors purchased by customers who spent more than average.
+*/
 SELECT DISTINCT N.fname,
                 N.mname,
                 N.lname
