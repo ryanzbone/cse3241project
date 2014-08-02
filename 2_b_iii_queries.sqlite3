@@ -108,3 +108,29 @@ FROM   employee AS E
                     AND emanager IS NOT NULL) AS M
          ON E.eid = M.manager
 WHERE  E.salary IS NOT NULL;
+
+SELECT N.fname,
+       N.mname,
+       N.lname,
+       Sum(amount)
+FROM   customer C,
+       names N,
+       entity E,
+       monetarytransaction T
+WHERE  E.id = C.eid
+       AND T.epayer = C.eid
+       AND N.id = E.nameid
+GROUP  BY C.eid;
+
+SELECT N.fname,
+       N.mname,
+       N.lname,
+       E.email
+FROM   monetarytransaction T,
+       entity E,
+       names N
+WHERE  t.epayer = E.id
+       AND E.nameid = N.id
+GROUP  BY T.epayer
+HAVING T.amount > (SELECT Avg (amount)
+                   FROM   monetarytransaction);
