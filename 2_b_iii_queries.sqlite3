@@ -236,3 +236,36 @@ WHERE  C.eid = O.eto
        AND G.bid = B.isbn
        AND B.isbn = A.isbn
        AND A.nameid = J.nameid;
+
+SELECT DISTINCT N.fname,
+                N.mname,
+                N.lname
+FROM   (SELECT D.id
+        FROM   (SELECT E.id,
+                       Sum(T.amount) AS sum
+                FROM   customer AS C,
+                       entity AS E,
+                       monetarytransaction AS T
+                WHERE  C.eid = E.id
+                       AND E.id = T.epayer
+                GROUP  BY E.id) AS D
+        GROUP  BY D.id
+        HAVING D.sum > (SELECT Avg(sum)
+                        FROM   (SELECT E.id,
+                                       Sum(T.amount) AS sum
+                                FROM   customer AS C,
+                                       entity AS E,
+                                       monetarytransaction AS T
+                                WHERE  C.eid = E.id
+                                       AND E.id = T.epayer
+                                GROUP  BY E.id))) AS C,
+       customerorder AS O,
+       ordercontents AS G,
+       book AS B,
+       bookauthor AS A,
+       names AS N
+WHERE  C.id = O.eto
+       AND G.oid = O.id
+       AND G.bid = B.isbn
+       AND B.isbn = A.isbn
+       AND A.nameid = N.id;
