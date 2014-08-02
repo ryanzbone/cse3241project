@@ -1,0 +1,508 @@
+1,Chip,Dawes,""
+2,Biju,Thomas,""
+3,Doug,Stuns,""
+4,Matthew,Weishan,""
+5,Joseph,Johnson,C.
+6,Brian,Knight,""
+7,Ralph,Kimball,""
+8,Margy,Ross,""
+9,Bill,Mann,""
+10,Ian,Witten,H.
+11,Eibe,Frank,""
+12,Robert,Schmidt,D.
+13,Ken,Henderson,""
+14,Paul,Litwin,""
+15,Ken,Getz,""
+16,Mike,Gunderloy,""
+17,Ben,Forta,""
+18,Nate,Weiss,""
+19,Leon,Chalnick,""
+20,Angela,Buraglia,C.
+21,Ramez,Elmasri,A.
+22,Shamkant,Navathe,B.
+23,Rob,Vieira,""
+24,Paul,DuBois,""
+25,uuurell,Hamilton,K.
+26,Sue,Kidd,Monk
+27,Tara,Calishain,""
+28,Rael,Dornfest,""
+29,Jay,Decima,P.
+30,Wladyslaw,Szpilman,""
+31,Roma,Ligocka,""
+32,Michael,Cunningham,""
+33,Larry,Bossidy,""
+34,Ram,Charan,""
+35,Charles,Burck,""
+36,James,Patterson,""
+37,Andrew,Gross,""
+38,Jeffery,Deaver,""
+39,Jacquelyn,Mitchard,""
+40,Patrick,Lencioni,""
+41,Mary,Clark,Higgins
+42,Dee,Henderson,""
+43,Ann,Patchett,""
+44,Karen,Moning,Marie
+45,Suzanne,Brockmann,""
+46,Steven,Pinker,""
+47,"Albert-László","Barabási",""
+48,Edward,Wilson,Osborne
+49,Stephen,Wolfram,""
+50,Harold,McGee,""
+51,Francis,Ching,"D. K."
+52,Cassandra,Adams,""
+53,Virginia,McAlester,""
+54,Lee,McAlester,""
+55,Bryan,Burkhart,""
+56,Allison,Arieff,""
+57,Ralph,Kylloe,R.
+58,Leslie,Clagett,Plummer
+59,Gerard,Gefen,""
+60,Christine,Bastin,""
+61,Jacques,Evrard,""
+62,Donald,Kaufman,""
+63,Taffy,Dahl,""
+64,Laurel,Graeber,""
+65,Tina,Freeman,""
+66,Simon,Benninga,""
+67,Benjamin,Czaczkes,""
+68,Mark,Grinblatt,""
+69,Sheridan,Titman,""
+70,Robert,Higgins,C.
+71,Paul,Fischer,Marcus
+72,William,Taylor,James
+73,Rita,Cheng,Hartung
+74,Donald,Kieso,E.
+75,Jerry,Weygandt,J.
+76,Terry,Warfield,D.
+77,Lawrence,Revsine,""
+78,Daniel,Collins,W.
+79,W.,Johnson,Bruce
+80,Nicholas,Sparks,""
+81,Don,DeLillo,""
+82,Stephen,King,""
+83,Mark,Danielewski,Z.
+84,Michael,Romkey,""
+85,Chuck,Palahniuk,""
+86,Matthew,Delaney,""
+87,Bernie,Wrightson,""
+88,Jeffrey,Wooldridge,M.
+89,Steven,Root,J.
+90,Ken,Coffman,""
+91,Gerald,Carter,""
+92,Scott,Kelby,""
+93,B.,Fogg,J.
+94,Michael,Meyers,""
+95,Carl,Sagan,""
+96,Alice,Sebold,""
+97,Ian,McEwan,""
+98,Nora,Roberts,""
+99,Andy,Rae,""
+100,Joseph,Truini,""
+101,Terry,Pratchett,""
+102,Jupiter,Terminus,""
+103,Saturnus,Summanus,""
+104,Gemini,Jove,""
+105,Liber,Silvius,""
+106,Vulcan,Mercury,""
+107,Cupid,Vulcan,""
+108,Summanus,Terminus,""
+109,Tatius,Quirinus,""
+110,Terminus,Liber,""
+111,Faunus,Hercules,""
+112,Italus,Numitor,""
+113,Vulcan,Italus,""
+114,Janus,Tatius,""
+115,Italus,Romulus,""
+116,Mercurius,Liber,""
+117,Janus,Aries,""
+118,Italus,Terminus,""
+119,Summanus,Silvanus,""
+120,Mars,Iovis,""
+121,Liber,Vulcan,""
+123,Ryan,Bone,Z
+124,Heather,Cook,L
+125,Charlie,Brown,""
+126,Captian,Hook,Cap
+127,Bettina,Bair,""
+128,Jane,Smith,Middlename
+129,John,Jameson,""
+130,Brooke,Mott,M
+131,Vinny,Provenzale,""
+132,Ryan,Parasilitti,""
+133,Jane,Koch,""
+134,Amanda,Mason,Elizabeth
+135,Ben,Way,""
+136,Jay,Bobo,J
+137,Michael,Gee,""
+138,Mark,Lorenz,""
+139,"Alan ",Gilbert,""
+140,"Ann ",Gilbert,""
+141,Alex,Krusinski,Joseph
+142,"Addison-Wesley Pub Co",,
+143,"Addison-Wesley Publishing",,
+144,"Anchor Books",,
+145,"Back Bay Books",,
+146,"Ballantine Books",,
+147,"Berkley Pub Group",,
+148,"Clarkson N. Potter",,
+149,"Crown Pub",,
+150,"Del Rey",,
+151,"Dell Pub Co",,
+152,"Donald M. Grant Publisher, Inc.",,
+153,Doubleday,,
+154,Fireside,,
+155,"Gibbs Smith Publisher",,
+156,Harlequin,,
+157,Harper,,
+158,HarperCollins,,
+159,"Harperperennial Library",,
+160,"Harvard Univ Pr",,
+161,"Harvest Books",,
+162,"John Wiley & Sons",,
+163,Jossey-Bass,,
+164,Knopf,,
+165,"Lark Books",,
+166,"Little Brown & Company",,
+167,"Macromedia Press",,
+168,"McGraw-Hill Osborne Media",,
+169,"McGraw-Hill Trade",,
+170,McGraw-Hill/Irwin,,
+171,"MIT Press",,
+172,"Morgan Kaufmann",,
+173,"Multnomah Publishers Inc.",,
+174,"New Riders Publishing",,
+175,"O'Reilly & Associates",,
+176,"Pantheon Books",,
+177,"Penguin USA",,
+178,Perennial,,
+179,"Perseus Publishing",,
+180,Picador,,
+181,"Pocket Books",,
+182,"Prentice Hall",,
+183,"Prentice Hall PTR",,
+184,Publisher,,
+185,"Putnam Pub Group",,
+186,"Random House",,
+187,"Random House Trade Paperbacks",,
+188,"Schmidt Ink, Inc.",,
+189,Scribner,,
+190,"Scribner Paperback Fiction",,
+191,Silhouette,,
+192,"Simon & Schuster",,
+193,"South-Western College Pub",,
+194,"St. Martin's Press",,
+195,Sybex,,
+196,"Taunton Pr",,
+197,"Vendome Pr",,
+198,"Viking Press",,
+199,"Vintage Books",,
+200,"W.W. Norton & Company",,
+201,"Warner Books",,
+202,"Wolfram Media, Inc.",,
+203,"Wrox Press Inc",,
+204,"Warehouse 1",,
+205,"Warehouse 2",,
+206,"Warehouse 3",,
+207,"Warehouse 4",,
+208,"Warehouse 5",,
+209,"Warehouse 6",,
+210,"Warehouse 7",,
+211,"Warehouse 8",,
+212,"Warehouse 9",,
+213,"Warehouse 10",,
+214,"Warehouse 11",,
+215,"Warehouse 12",,
+216,"Warehouse 13",,
+217,"Warehouse 14",,
+218,"Warehouse 15",,
+219,"Warehouse 16",,
+220,"Warehouse 17",,
+221,"Warehouse 18",,
+222,"Warehouse 19",,
+223,"Warehouse 20",,
+CREATE TABLE Book ( 
+isbn CHAR(10) NOT NULL,
+price DOUBLE NOT NULL,
+title VARCHAR(254) NOT NULL,
+pid INT,
+year CHAR(4),
+length INT,
+
+FOREIGN KEY(pid) REFERENCES Publisher(key),
+PRIMARY KEY(isbn)
+);
+CREATE TABLE BookAuthor (
+isbn INT NOT NULL,
+nameid INT NOT NULL,
+
+FOREIGN KEY(isbn) REFERENCES Book(isbn),
+FOREIGN KEY(nameid) REFERENCES Names(id)
+
+);
+CREATE TABLE BookCategory (
+isbn CHAR(10) NOT NULL,
+category VARCHAR(254),
+
+FOREIGN KEY(isbn) REFERENCES Book(isbn),
+PRIMARY KEY(isbn)
+);
+CREATE TABLE BookDescription (
+isbn CHAR(10) NOT NULL,
+description VARCHAR(4095),
+
+FOREIGN KEY(isbn) REFERENCES Book(isbn),
+PRIMARY KEY(isbn)
+);
+CREATE TABLE CreditCard (
+    cc_num INT NOT NULL,
+    eid INT NOT NULL,
+
+    PRIMARY KEY(eid),
+    FOREIGN KEY(eid) REFERENCES Entity(id)
+    );
+CREATE TABLE Customer (
+eid INT NOT NULL,
+
+PRIMARY KEY(eid),
+FOREIGN KEY(eid) REFERENCES Entity(id)
+);
+CREATE TABLE CustomerOrder (
+id INT NOT NULL ,
+efrom INT NOT NULL,
+departure TIMESTAMP,
+eto INT NOT NULL,
+arrival TIMESTAMP,
+transactionid NOT NULL,
+
+FOREIGN KEY(efrom) REFERENCES Entity(id),
+FOREIGN KEY(eto) REFERENCES Entity(id),
+PRIMARY KEY(id)
+);
+CREATE TABLE Employee (
+eid INT NOT NULL,
+salary INT,
+wage INT,
+emanager INT,
+title VARCHAR(254),
+start_date DATE,
+wid INT,
+
+FOREIGN KEY(emanager) REFERENCES Employee(eid),
+FOREIGN KEY(wid) REFERENCES Warehouse(eid),
+FOREIGN KEY(eid) REFERENCES Entity(id),
+PRIMARY KEY(eid)
+);
+CREATE TABLE Entity (
+id INT NOT NULL,
+nameid INT NOT NULL,
+phone VARCHAR(15),
+email VARCHAR(254),
+po_box VARCHAR(10),
+city VARCHAR(50),
+state VARCHAR(2),
+postalcode VARCHAR(50),
+country VARCHAR(255),
+address VARCHAR(255),
+
+PRIMARY KEY(id)
+FOREIGN KEY(nameid) REFERENCES Name(id)
+);
+CREATE TABLE Inventory (
+bid INT NOT NULL,
+wid INT NOT NULL,
+quantity INT NOT NULL DEFAULT(0),
+
+FOREIGN KEY(bid) REFERENCES Book(isbn),
+FOREIGN KEY(wid) REFERENCES Warehouse(eid)
+);
+CREATE TABLE MonetaryTransaction (
+id INT NOT NULL,
+timestamp TIMESTAMP,
+amount INT NOT NULL DEFAULT(0),
+epayer INT NOT NULL,
+epayee INT NOT NULL,
+
+FOREIGN KEY(epayer) REFERENCES Entity(id),
+FOREIGN KEY(epayee) REFERENCES Entity(id),
+PRIMARY KEY(id));
+CREATE TABLE Names (
+  id INT NOT NULL,
+  fname VARCHAR(50) NOT NULL,
+  lname VARCHAR(50),
+  mname VARCHAR(50),
+  PRIMARY KEY(id)
+);
+CREATE TABLE OrderContents (
+oid INT NOT NULL,
+bid INT NOT NULL,
+quantity INT NOT NULL DEFAULT(1),
+
+FOREIGN KEY(bid) references Book(isbn),
+FOREIGN KEY(oid) references CustomerOrder(id),
+PRIMARY KEY (oid, bid)
+);
+CREATE TABLE Publisher (
+eid INT NOT NULL,
+slogan VARCHAR(254),
+
+FOREIGN KEY(eid) REFERENCES Entity(id),
+PRIMARY KEY(eid)
+);
+CREATE TABLE Rating (
+cid INT NOT NULL,
+bid INT NOT NULL,
+rating INT,
+
+FOREIGN KEY(bid) REFERENCES Book(isbn),
+FOREIGN KEY(cid) REFERENCES Customer(eid)
+PRIMARY KEY(cid, bid)
+);
+CREATE TABLE Warehouse (
+eid INT NOT NULL,
+
+PRIMARY KEY(eid),
+FOREIGN KEY(eid) REFERENCES Entity(id)
+);
+CREATE TABLE Book ( 
+isbn CHAR(10) NOT NULL,
+price DOUBLE NOT NULL,
+title VARCHAR(254) NOT NULL,
+pid INT,
+year CHAR(4),
+length INT,
+
+FOREIGN KEY(pid) REFERENCES Publisher(key),
+PRIMARY KEY(isbn)
+);
+CREATE TABLE BookAuthor (
+isbn INT NOT NULL,
+nameid INT NOT NULL,
+
+FOREIGN KEY(isbn) REFERENCES Book(isbn),
+FOREIGN KEY(nameid) REFERENCES Names(id)
+
+);
+CREATE TABLE BookCategory (
+isbn CHAR(10) NOT NULL,
+category VARCHAR(254),
+
+FOREIGN KEY(isbn) REFERENCES Book(isbn),
+PRIMARY KEY(isbn)
+);
+CREATE TABLE BookDescription (
+isbn CHAR(10) NOT NULL,
+description VARCHAR(4095),
+
+FOREIGN KEY(isbn) REFERENCES Book(isbn),
+PRIMARY KEY(isbn)
+);
+CREATE TABLE CreditCard (
+    cc_num INT NOT NULL,
+    eid INT NOT NULL,
+
+    PRIMARY KEY(eid),
+    FOREIGN KEY(eid) REFERENCES Entity(id)
+    );
+CREATE TABLE Customer (
+eid INT NOT NULL,
+
+PRIMARY KEY(eid),
+FOREIGN KEY(eid) REFERENCES Entity(id)
+);
+CREATE TABLE CustomerOrder (
+id INT NOT NULL ,
+efrom INT NOT NULL,
+departure TIMESTAMP,
+eto INT NOT NULL,
+arrival TIMESTAMP,
+transactionid NOT NULL,
+
+FOREIGN KEY(efrom) REFERENCES Entity(id),
+FOREIGN KEY(eto) REFERENCES Entity(id),
+PRIMARY KEY(id)
+);
+CREATE TABLE Employee (
+eid INT NOT NULL,
+salary INT,
+wage INT,
+emanager INT,
+title VARCHAR(254),
+start_date DATE,
+wid INT,
+
+FOREIGN KEY(emanager) REFERENCES Employee(eid),
+FOREIGN KEY(wid) REFERENCES Warehouse(eid),
+FOREIGN KEY(eid) REFERENCES Entity(id),
+PRIMARY KEY(eid)
+);
+CREATE TABLE Entity (
+id INT NOT NULL,
+nameid INT NOT NULL,
+phone VARCHAR(15),
+email VARCHAR(254),
+po_box VARCHAR(10),
+city VARCHAR(50),
+state VARCHAR(2),
+postalcode VARCHAR(50),
+country VARCHAR(255),
+address VARCHAR(255),
+
+PRIMARY KEY(id)
+FOREIGN KEY(nameid) REFERENCES Name(id)
+);
+CREATE TABLE Inventory (
+bid INT NOT NULL,
+wid INT NOT NULL,
+quantity INT NOT NULL DEFAULT(0),
+
+FOREIGN KEY(bid) REFERENCES Book(isbn),
+FOREIGN KEY(wid) REFERENCES Warehouse(eid)
+);
+CREATE TABLE MonetaryTransaction (
+id INT NOT NULL,
+timestamp TIMESTAMP,
+amount INT NOT NULL DEFAULT(0),
+epayer INT NOT NULL,
+epayee INT NOT NULL,
+
+FOREIGN KEY(epayer) REFERENCES Entity(id),
+FOREIGN KEY(epayee) REFERENCES Entity(id),
+PRIMARY KEY(id));
+CREATE TABLE Names (
+  id INT NOT NULL,
+  fname VARCHAR(50) NOT NULL,
+  lname VARCHAR(50),
+  mname VARCHAR(50),
+  PRIMARY KEY(id)
+);
+CREATE TABLE OrderContents (
+oid INT NOT NULL,
+bid INT NOT NULL,
+quantity INT NOT NULL DEFAULT(1),
+
+FOREIGN KEY(bid) references Book(isbn),
+FOREIGN KEY(oid) references CustomerOrder(id),
+PRIMARY KEY (oid, bid)
+);
+CREATE TABLE Publisher (
+eid INT NOT NULL,
+slogan VARCHAR(254),
+
+FOREIGN KEY(eid) REFERENCES Entity(id),
+PRIMARY KEY(eid)
+);
+CREATE TABLE Rating (
+cid INT NOT NULL,
+bid INT NOT NULL,
+rating INT,
+
+FOREIGN KEY(bid) REFERENCES Book(isbn),
+FOREIGN KEY(cid) REFERENCES Customer(eid)
+PRIMARY KEY(cid, bid)
+);
+CREATE TABLE Warehouse (
+eid INT NOT NULL,
+
+PRIMARY KEY(eid),
+FOREIGN KEY(eid) REFERENCES Entity(id)
+);
