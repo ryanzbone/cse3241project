@@ -89,4 +89,22 @@ WHERE  B.isbn = A.isbn
        AND A.nameid = N.id
        AND N.lname LIKE '%Pratchett';
 
+SELECT Avg(rating)
+FROM   rating
+WHERE  bid = 140077022;
 
+SELECT Avg(r.rating)
+FROM   rating r
+       JOIN book b
+         ON r.bid = b.isbn
+WHERE  r.bid = 140077022;
+
+SELECT Max(salary)
+FROM   employee AS E
+       JOIN (SELECT emanager AS manager
+             FROM   employee E,
+                    entity N
+             WHERE  E.eid = E.emanager
+                    AND emanager IS NOT NULL) AS M
+         ON E.eid = M.manager
+WHERE  E.salary IS NOT NULL;
