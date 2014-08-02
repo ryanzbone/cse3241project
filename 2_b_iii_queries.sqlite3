@@ -1,0 +1,92 @@
+SELECT DISTINCT B.title,
+                N.lname
+FROM   book B,
+       bookauthor A,
+       names N
+WHERE  b.price < 10.00
+       AND A.nameid = N.id
+       AND N.lname LIKE '%Pratchett'
+       AND B.isbn = A.isbn;
+
+SELECT B.title,
+       T.timestamp
+FROM   book B,
+       monetarytransaction T,
+       customerorder O,
+       ordercontents G
+WHERE  T.oid = O.id
+       AND G.oid = O.id
+       AND B.isbn = G.bid
+       AND T.epayer = 121;
+
+SELECT B.title,
+       B.isbn,
+       I.quantity
+FROM   book B,
+       inventory I
+WHERE  I.bid = B.isbn
+       AND i.quantity < 5;
+
+SELECT N.fname,
+       N.mname,
+       N.lname,
+       B.title
+FROM   entity E,
+       names N,
+       customer C,
+       monetarytransaction T,
+       customerorder O,
+       ordercontents G,
+       book B,
+       bookauthor A
+WHERE  C.eid = T.epayer
+       AND T.oid = O.id
+       AND C.eid = E.id
+       AND G.oid = O.id
+       AND B.isbn = G.bid
+       AND A.isbn = B.isbn
+       AND E.nameid = N.id
+       AND N.lname LIKE '%Pratchett';
+
+SELECT Sum(quantity)
+FROM   monetarytransaction T,
+       customerorder O,
+       ordercontents G
+WHERE  T.epayer = 140
+       AND T.id = O.transactionid
+       AND G.oid = O.id;
+
+ELECT EidSum.eid,
+       EidSum.total
+FROM   (SELECT C.eid,
+               Sum(quantity) AS total
+        FROM   customer C,
+               monetarytransaction T,
+               customerorder O,
+               ordercontents G
+        WHERE  C.eid = T.epayer
+               AND T.oid = O.id
+               AND G.oid = O.id
+        GROUP  BY C.eid) EidSum
+WHERE  EidSum.total = (SELECT Max(e.total)
+                       FROM   (SELECT Sum(quantity) AS total
+                               FROM   customer C,
+                                      monetarytransaction T,
+                                      customerorder O,
+                                      ordercontents G
+                               WHERE  C.eid = T.epayer
+                                      AND T.oid = O.id
+                                      AND G.oid = O.id
+                               GROUP  BY C.eid) e);
+
+SELECT Sum(I.quantity)
+FROM   book B,
+       bookauthor A,
+       names N,
+       inventory I
+WHERE  B.isbn = A.isbn
+       AND I.bid = B.isbn
+       AND A.nameid = N.id
+       AND N.lname LIKE '%Pratchett';
+
+
