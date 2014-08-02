@@ -158,3 +158,27 @@ WHERE  T.epayer = C.eid
        AND B.isbn = G.bid
 GROUP  BY B.isbn
 ORDER  BY total DESC;
+
+ELECT D.fname,
+       D.mname,
+       D.lname
+FROM   (SELECT N.id,
+               N.fname,
+               N.mname,
+               N.lname,
+               Sum(quantity) AS sales
+        FROM   customer C,
+               customerorder O,
+               ordercontents G,
+               book B,
+               bookauthor A,
+               names N
+        WHERE  O.eto = C.eid
+               AND G.oid = O.id
+               AND B.isbn = G.bid
+               AND B.isbn = A.isbn
+               AND A.nameid = N.id
+        GROUP  BY N.id) AS D
+GROUP  BY D.id
+HAVING D.sales = Max(D.sales)
+LIMIT  1;
