@@ -1,0 +1,215 @@
+CREATE TABLE book
+  (
+     isbn   CHAR(10) NOT NULL,
+     price  DOUBLE NOT NULL,
+     title  VARCHAR(254) NOT NULL,
+     pid    INT,
+     year   CHAR(4),
+     length INT,
+     FOREIGN KEY(pid) REFERENCES publisher(KEY),
+     PRIMARY KEY(isbn)
+  );
+
+CREATE TABLE bookauthor
+  (
+     isbn   INT NOT NULL,
+     nameid INT NOT NULL,
+     FOREIGN KEY(isbn) REFERENCES book(isbn),
+     FOREIGN KEY(nameid) REFERENCES names(id)
+  );
+
+CREATE TABLE bookcategory
+  (
+     isbn     CHAR(10) NOT NULL,
+     category VARCHAR(254),
+     FOREIGN KEY(isbn) REFERENCES book(isbn),
+     PRIMARY KEY(isbn)
+  );
+
+CREATE TABLE bookdescription
+  (
+     isbn        CHAR(10) NOT NULL,
+     description VARCHAR(4095),
+     FOREIGN KEY(isbn) REFERENCES book(isbn),
+     PRIMARY KEY(isbn)
+  );
+
+CREATE TABLE customer
+  (
+     eid INT NOT NULL,
+     PRIMARY KEY(eid),
+     FOREIGN KEY(eid) REFERENCES entity(id)
+  );
+
+CREATE TABLE employee
+  (
+     eid        INT NOT NULL,
+     salary     INT,
+     wage       INT,
+     emanager   INT,
+     title      VARCHAR(254),
+     start_date DATE,
+     wid        INT,
+     FOREIGN KEY(emanager) REFERENCES employee(eid),
+     FOREIGN KEY(wid) REFERENCES warehouse(eid),
+     FOREIGN KEY(eid) REFERENCES entity(id),
+     PRIMARY KEY(eid)
+  );
+
+CREATE TABLE inventory
+  (
+     bid      INT NOT NULL,
+     wid      INT NOT NULL,
+     quantity INT NOT NULL DEFAULT(0),
+     FOREIGN KEY(bid) REFERENCES book(isbn),
+     FOREIGN KEY(wid) REFERENCES warehouse(eid)
+  );
+
+CREATE TABLE ordercontents
+  (
+     oid      INT NOT NULL,
+     bid      INT NOT NULL,
+     quantity INT NOT NULL DEFAULT(1),
+     FOREIGN KEY(bid) REFERENCES book(isbn),
+     FOREIGN KEY(oid) REFERENCES customerorder(id),
+     PRIMARY KEY (oid, bid)
+  );
+
+CREATE TABLE publisher
+  (
+     eid    INT NOT NULL,
+     slogan VARCHAR(254),
+     FOREIGN KEY(eid) REFERENCES entity(id),
+     PRIMARY KEY(eid)
+  );
+
+CREATE TABLE rating
+  (
+     cid    INT NOT NULL,
+     bid    INT NOT NULL,
+     rating INT,
+     FOREIGN KEY(bid) REFERENCES book(isbn),
+     FOREIGN KEY(cid) REFERENCES customer(eid)
+     PRIMARY KEY(cid, bid)
+  );
+
+CREATE TABLE warehouse
+  (
+     eid INT NOT NULL,
+     PRIMARY KEY(eid),
+     FOREIGN KEY(eid) REFERENCES entity(id)
+  );
+
+CREATE TABLE creditcard
+  (
+     cc_num CHAR(16) NOT NULL,
+     eid    INT NOT NULL,
+     PRIMARY KEY(eid),
+     FOREIGN KEY(eid) REFERENCES entity(id)
+  );
+
+CREATE TABLE customerorder
+  (
+     id            INTEGER NOT NULL,
+     efrom         INT NOT NULL,
+     departure     TIMESTAMP,
+     eto           INT NOT NULL,
+     arrival       TIMESTAMP,
+     transactionid NOT NULL,
+     FOREIGN KEY(transactionid) REFERENCES monetarytransaction(id),
+     FOREIGN KEY(efrom) REFERENCES entity(id),
+     FOREIGN KEY(eto) REFERENCES entity(id),
+     PRIMARY KEY(id)
+  );
+
+CREATE TABLE entity
+  (
+     id         INTEGER NOT NULL,
+     nameid     INT NOT NULL,
+     phone      VARCHAR(15),
+     email      VARCHAR(254),
+     po_box     VARCHAR(10),
+     country    VARCHAR(50),
+     city       VARCHAR(50),
+     state      VARCHAR(2),
+     postalcode VARCHAR(50),
+     address    VARCHAR(255),
+     PRIMARY KEY(id)
+     FOREIGN KEY(nameid) REFERENCES name(id)
+  );
+
+CREATE TABLE monetarytransaction
+  (
+     id        INTEGER NOT NULL,
+     timestamp TIMESTAMP,
+     amount    INT NOT NULL DEFAULT(0),
+     epayer    INT NOT NULL,
+     epayee    INT NOT NULL,
+     FOREIGN KEY(epayer) REFERENCES entity(id),
+     FOREIGN KEY(epayee) REFERENCES entity(id),
+     PRIMARY KEY(id)
+  );
+
+CREATE TABLE names
+  (
+     id    INTEGER NOT NULL,
+     fname VARCHAR(50) NOT NULL,
+     lname VARCHAR(50),
+     mname VARCHAR(50),
+     PRIMARY KEY(id)
+  );
+
+CREATE VIEW customertotalspent
+AS
+  SELECT N.id,
+         N.fname,
+         N.lname,
+         Sum(M.amount)
+  FROM   names N,
+         customer C,
+         monetarytransaction M
+  WHERE  N.id = C.eid
+         AND M.epayer = C.eid
+  GROUP  BY N.id;
+
+CREATE VIEW quantitysoldperbook
+AS
+  SELECT O.bid,
+         Sum(O.quantity) AS numberSold
+  FROM   ordercontents O
+  GROUP  BY O.bid;
+
+CREATE VIEW authorprofitquantity
+AS
+  SELECT A.fname,
+         A.mname,
+         A.lname,
+         Sum(P.profit),
+         Sum(T.numbersold)
+  FROM   names A,
+         (SELECT O.bid           AS isbn,
+                 Sum(O.quantity) AS numberSold
+          FROM   ordercontents O
+          GROUP  BY O.bid) T,
+         (SELECT T.isbn,
+                 T.sum * B.price AS profit
+          FROM   (SELECT O.bid           AS isbn,
+                         Sum(O.quantity) AS Sum
+                  FROM   ordercontents O
+                  GROUP  BY O.bid) T,
+                 book B
+          WHERE  B.isbn = T.isbn) P,
+         bookauthor BA
+  WHERE  t.isbn = p.isbn
+         AND ba.isbn = t.isbn
+         AND BA.nameid = A.id
+  GROUP  BY ba.nameid;
+
+CREATE INDEX isbnindex
+  ON book(isbn);
+
+CREATE INDEX prices
+  ON book(price);
+
+CREATE INDEX titles
+  ON book(title);
