@@ -53,3 +53,88 @@ FROM   entity e,
        names n
 WHERE  e.nameid = n.id
   AND  n.fname = 'OSU UniPrint';
+
+-- Author requires name, entity entries
+INSERT INTO Names
+            (fname,
+             mname,
+             lname)
+VALUES      ('David',
+             'Foster',
+             'Wallace');
+
+INSERT INTO entity
+            (nameid)
+SELECT id
+FROM   names
+WHERE  fname = 'David'
+       AND mname = 'Foster'
+       AND lname = 'Wallace';
+
+-- Associate book with author
+INSERT INTO bookauthor
+            (isbn,
+             nameid)
+SELECT 9780316074230,
+       id
+FROM   names
+WHERE  fname = 'David'
+       AND mname = 'Foster'
+       AND lname = 'Wallace';
+
+-- Customer requires name, entity, customer entries
+INSERT INTO Names
+(fname,
+            mname,
+            lname)
+VALUES      ('Bob',
+            '',
+            'Smith');
+-- Then, the entity relationship is changed with the new name:
+INSERT INTO Entity
+           (nameid)
+SELECT id
+FROM   names
+WHERE  fname = 'Bob'
+      AND mname = ''
+      AND lname = 'Smith';
+
+-- Lastly, the Customer table gets a reference to the new entity:
+INSERT INTO Customer
+           (eid)
+SELECT E.id
+FROM   Names N, Entity E
+WHERE  E.nameid = N.id
+    AND fname = 'Bob'
+    AND mname = ''
+    AND lname = 'Smith';
+
+
+-- Part D
+-- Book: Deleting a book requires first pruning its authors, categories, descriptions, and ratings:
+DELETE FROM BookAuthor
+WHERE   isbn = '112233445566';
+
+DELETE FROM BookCategory
+WHERE   isbn = '112233445566';
+
+DELETE FROM BookDescription
+WHERE   isbn = '112233445566';
+
+DELETE FROM Rating
+WHERE   bid = '112233445566';
+
+-- Next, it is removed from inventory:
+DELETE FROM Inventory
+WHERE   bid = '112233445566';
+
+-- And last, the original record from Book is destroyed:
+DELETE FROM Book
+WHERE   isbn = '112233445566';
+
+-- Deleting an author first requires removing the links to books they’ve written:
+DELETE FROM bookauthor
+WHERE  bookauthor.nameid IN (SELECT n.id
+                             FROM   names n
+                             WHERE  n.fname = 'David'
+                                AND n.lname = 'Wallace');
