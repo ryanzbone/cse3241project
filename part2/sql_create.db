@@ -6,7 +6,7 @@ CREATE TABLE book
      pid    INT,
      year   CHAR(4),
      length INT,
-     FOREIGN KEY(pid) REFERENCES publisher(KEY),
+     FOREIGN KEY(pid) REFERENCES publisher(id),
      PRIMARY KEY(isbn)
   );
 
