@@ -135,7 +135,7 @@ CREATE TABLE entity
      postalcode VARCHAR(50),
      address    VARCHAR(255),
      PRIMARY KEY(id)
-     FOREIGN KEY(nameid) REFERENCES name(id)
+     FOREIGN KEY(nameid) REFERENCES names(id)
   );
 
 CREATE TABLE monetarytransaction

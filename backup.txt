@@ -140,6 +140,7 @@ INSERT INTO "Book" VALUES('067463442X',18.95,'On Human Nature',160,'1988',334);
 INSERT INTO "Book" VALUES('067976867X',15.0,'Consilience: The Unity of Knowledge',186,'1999',827);
 INSERT INTO "Book" VALUES('156158648X',24.95,'The New City Home: Smart Solutions for Metro Living',196,'2003',969);
 INSERT INTO "Book" VALUES('isbn','','title','pid','year','length');
+INSERT INTO "Book" VALUES('1234567890',9.99,'book title',142,'1999',300);
 CREATE TABLE BookAuthor (
 isbn INT NOT NULL,
 nameid INT NOT NULL,
@@ -351,26 +352,26 @@ FOREIGN KEY(eid) REFERENCES Entity(id),
 PRIMARY KEY(eid)
 );
 INSERT INTO "Employee" VALUES('eid','salary','wage','emanager','title','starte_date','wid');
-INSERT INTO "Employee" VALUES(224,'',10,417,'warehouse','10/10/2010',204);
-INSERT INTO "Employee" VALUES(225,'',10,417,'warehouse','10/11/2010',205);
-INSERT INTO "Employee" VALUES(226,'',10,417,'warehouse','10/12/2010',206);
-INSERT INTO "Employee" VALUES(227,'',10,417,'warehouse','10/13/2010',207);
-INSERT INTO "Employee" VALUES(228,'',10,417,'warehouse','10/14/2010',208);
-INSERT INTO "Employee" VALUES(229,'',10,417,'warehouse','10/15/2010',209);
-INSERT INTO "Employee" VALUES(230,'',10,417,'warehouse','10/16/2010',210);
-INSERT INTO "Employee" VALUES(231,'',10,417,'warehouse','10/17/2010',211);
-INSERT INTO "Employee" VALUES(232,'',10,417,'warehouse','10/18/2010',212);
-INSERT INTO "Employee" VALUES(233,'',10,417,'warehouse','10/19/2010',213);
-INSERT INTO "Employee" VALUES(234,'',20,416,'manager','1/3/2001',214);
-INSERT INTO "Employee" VALUES(235,'',20,416,'manager','1/4/2001',215);
-INSERT INTO "Employee" VALUES(236,'',20,416,'manager','1/5/2001',216);
-INSERT INTO "Employee" VALUES(237,'',20,416,'manager','1/6/2001',217);
-INSERT INTO "Employee" VALUES(238,'',25,418,'regional manager','4/6/1999',218);
-INSERT INTO "Employee" VALUES(239,'',25,418,'regional manager','4/7/1999',219);
-INSERT INTO "Employee" VALUES(240,60000,'',419,'cheif','3/30/1999',220);
-INSERT INTO "Employee" VALUES(241,50000,'',419,'cheif','3/30/1999',221);
-INSERT INTO "Employee" VALUES(242,70000,'',419,'cheif','3/30/1999',222);
-INSERT INTO "Employee" VALUES(243,80000,'',419,'cheif','3/30/1999',223);
+INSERT INTO "Employee" VALUES(224,'',10,234,'warehouse','10/10/2010',204);
+INSERT INTO "Employee" VALUES(225,'',10,234,'warehouse','10/11/2010',205);
+INSERT INTO "Employee" VALUES(226,'',10,234,'warehouse','10/12/2010',206);
+INSERT INTO "Employee" VALUES(227,'',10,234,'warehouse','10/13/2010',207);
+INSERT INTO "Employee" VALUES(228,'',10,235,'warehouse','10/14/2010',208);
+INSERT INTO "Employee" VALUES(229,'',10,235,'warehouse','10/15/2010',209);
+INSERT INTO "Employee" VALUES(230,'',10,235,'warehouse','10/16/2010',210);
+INSERT INTO "Employee" VALUES(231,'',10,236,'warehouse','10/17/2010',211);
+INSERT INTO "Employee" VALUES(232,'',10,236,'warehouse','10/18/2010',212);
+INSERT INTO "Employee" VALUES(233,'',10,236,'warehouse','10/19/2010',213);
+INSERT INTO "Employee" VALUES(234,'',20,238,'manager','1/3/2001',214);
+INSERT INTO "Employee" VALUES(235,'',20,238,'manager','1/4/2001',215);
+INSERT INTO "Employee" VALUES(236,'',20,238,'manager','1/5/2001',216);
+INSERT INTO "Employee" VALUES(237,'',20,239,'manager','1/6/2001',217);
+INSERT INTO "Employee" VALUES(238,'',25,240,'regional manager','4/6/1999',218);
+INSERT INTO "Employee" VALUES(239,'',25,241,'regional manager','4/7/1999',219);
+INSERT INTO "Employee" VALUES(240,60000,'',243,'cheif','3/30/1999',220);
+INSERT INTO "Employee" VALUES(241,50000,'',243,'cheif','3/30/1999',221);
+INSERT INTO "Employee" VALUES(242,70000,'',243,'cheif','3/30/1999',222);
+INSERT INTO "Employee" VALUES(243,80000,'',243,'cheif','3/30/1999',223);
 CREATE TABLE Inventory (
 bid INT NOT NULL,
 wid INT NOT NULL,
@@ -618,6 +619,28 @@ FOREIGN KEY(bid) REFERENCES Book(isbn),
 FOREIGN KEY(cid) REFERENCES Customer(eid)
 PRIMARY KEY(cid, bid)
 );
+INSERT INTO "Rating" VALUES('Customer ID','ISBN','Rating');
+INSERT INTO "Rating" VALUES(122,61020648,5);
+INSERT INTO "Rating" VALUES(123,61020656,3);
+INSERT INTO "Rating" VALUES(124,61092177,6);
+INSERT INTO "Rating" VALUES(125,61161721,7);
+INSERT INTO "Rating" VALUES(126,66214750,8);
+INSERT INTO "Rating" VALUES(127,71414339,2);
+INSERT INTO "Rating" VALUES(128,72222743,4);
+INSERT INTO "Rating" VALUES(129,72227710,1);
+INSERT INTO "Rating" VALUES(130,72227885,7);
+INSERT INTO "Rating" VALUES(131,72294337,8);
+INSERT INTO "Rating" VALUES(132,72315318,5);
+INSERT INTO "Rating" VALUES(133,130323519,3);
+INSERT INTO "Rating" VALUES(134,130998516,7);
+INSERT INTO "Rating" VALUES(135,140077022,9);
+INSERT INTO "Rating" VALUES(136,142001740,4);
+INSERT INTO "Rating" VALUES(137,156006219,3);
+INSERT INTO "Rating" VALUES(138,201615762,5);
+INSERT INTO "Rating" VALUES(139,262024829,6);
+INSERT INTO "Rating" VALUES(140,262232197,7);
+INSERT INTO "Rating" VALUES(141,262521415,3);
+INSERT INTO "Rating" VALUES(122,140077022,7);
 CREATE TABLE Warehouse (
 eid INT NOT NULL,
 
@@ -914,604 +937,639 @@ INSERT INTO "BookCategory" VALUES('038572179X','Literature & Fiction');
 INSERT INTO "BookCategory" VALUES('067463442X','Science');
 INSERT INTO "BookCategory" VALUES('067976867X','Science');
 INSERT INTO "BookCategory" VALUES('156158648X','Home Design');
-CREATE TABLE Names (
-  id INT NOT NULL,
-  fname VARCHAR(50) NOT NULL,
-  lname VARCHAR(50),
-  mname VARCHAR(50),
-  PRIMARY KEY(id)
-);
-INSERT INTO "Names" VALUES(1,'Chip','Dawes','');
-INSERT INTO "Names" VALUES(2,'Biju','Thomas','');
-INSERT INTO "Names" VALUES(3,'Doug','Stuns','');
-INSERT INTO "Names" VALUES(4,'Matthew','Weishan','');
-INSERT INTO "Names" VALUES(5,'Joseph','Johnson','C.');
-INSERT INTO "Names" VALUES(6,'Brian','Knight','');
-INSERT INTO "Names" VALUES(7,'Ralph','Kimball','');
-INSERT INTO "Names" VALUES(8,'Margy','Ross','');
-INSERT INTO "Names" VALUES(9,'Bill','Mann','');
-INSERT INTO "Names" VALUES(10,'Ian','Witten','H.');
-INSERT INTO "Names" VALUES(11,'Eibe','Frank','');
-INSERT INTO "Names" VALUES(12,'Robert','Schmidt','D.');
-INSERT INTO "Names" VALUES(13,'Ken','Henderson','');
-INSERT INTO "Names" VALUES(14,'Paul','Litwin','');
-INSERT INTO "Names" VALUES(15,'Ken','Getz','');
-INSERT INTO "Names" VALUES(16,'Mike','Gunderloy','');
-INSERT INTO "Names" VALUES(17,'Ben','Forta','');
-INSERT INTO "Names" VALUES(18,'Nate','Weiss','');
-INSERT INTO "Names" VALUES(19,'Leon','Chalnick','');
-INSERT INTO "Names" VALUES(20,'Angela','Buraglia','C.');
-INSERT INTO "Names" VALUES(21,'Ramez','Elmasri','A.');
-INSERT INTO "Names" VALUES(22,'Shamkant','Navathe','B.');
-INSERT INTO "Names" VALUES(23,'Rob','Vieira','');
-INSERT INTO "Names" VALUES(24,'Paul','DuBois','');
-INSERT INTO "Names" VALUES(25,'Laurel','Hamilton','K.');
-INSERT INTO "Names" VALUES(26,'Sue','Kidd','Monk');
-INSERT INTO "Names" VALUES(27,'Tara','Calishain','');
-INSERT INTO "Names" VALUES(28,'Rael','Dornfest','');
-INSERT INTO "Names" VALUES(29,'Jay','Decima','P.');
-INSERT INTO "Names" VALUES(30,'Wladyslaw','Szpilman','');
-INSERT INTO "Names" VALUES(31,'Roma','Ligocka','');
-INSERT INTO "Names" VALUES(32,'Michael','Cunningham','');
-INSERT INTO "Names" VALUES(33,'Larry','Bossidy','');
-INSERT INTO "Names" VALUES(34,'Ram','Charan','');
-INSERT INTO "Names" VALUES(35,'Charles','Burck','');
-INSERT INTO "Names" VALUES(36,'James','Patterson','');
-INSERT INTO "Names" VALUES(37,'Andrew','Gross','');
-INSERT INTO "Names" VALUES(38,'Jeffery','Deaver','');
-INSERT INTO "Names" VALUES(39,'Jacquelyn','Mitchard','');
-INSERT INTO "Names" VALUES(40,'Patrick','Lencioni','');
-INSERT INTO "Names" VALUES(41,'Mary','Clark','Higgins');
-INSERT INTO "Names" VALUES(42,'Dee','Henderson','');
-INSERT INTO "Names" VALUES(43,'Ann','Patchett','');
-INSERT INTO "Names" VALUES(44,'Karen','Moning','Marie');
-INSERT INTO "Names" VALUES(45,'Suzanne','Brockmann','');
-INSERT INTO "Names" VALUES(46,'Steven','Pinker','');
-INSERT INTO "Names" VALUES(47,'Albert-László','Barabási','');
-INSERT INTO "Names" VALUES(48,'Edward','Wilson','Osborne');
-INSERT INTO "Names" VALUES(49,'Stephen','Wolfram','');
-INSERT INTO "Names" VALUES(50,'Harold','McGee','');
-INSERT INTO "Names" VALUES(51,'Francis','Ching','D. K.');
-INSERT INTO "Names" VALUES(52,'Cassandra','Adams','');
-INSERT INTO "Names" VALUES(53,'Virginia','McAlester','');
-INSERT INTO "Names" VALUES(54,'Lee','McAlester','');
-INSERT INTO "Names" VALUES(55,'Bryan','Burkhart','');
-INSERT INTO "Names" VALUES(56,'Allison','Arieff','');
-INSERT INTO "Names" VALUES(57,'Ralph','Kylloe','R.');
-INSERT INTO "Names" VALUES(58,'Leslie','Clagett','Plummer');
-INSERT INTO "Names" VALUES(59,'Gerard','Gefen','');
-INSERT INTO "Names" VALUES(60,'Christine','Bastin','');
-INSERT INTO "Names" VALUES(61,'Jacques','Evrard','');
-INSERT INTO "Names" VALUES(62,'Donald','Kaufman','');
-INSERT INTO "Names" VALUES(63,'Taffy','Dahl','');
-INSERT INTO "Names" VALUES(64,'Laurel','Graeber','');
-INSERT INTO "Names" VALUES(65,'Tina','Freeman','');
-INSERT INTO "Names" VALUES(66,'Simon','Benninga','');
-INSERT INTO "Names" VALUES(67,'Benjamin','Czaczkes','');
-INSERT INTO "Names" VALUES(68,'Mark','Grinblatt','');
-INSERT INTO "Names" VALUES(69,'Sheridan','Titman','');
-INSERT INTO "Names" VALUES(70,'Robert','Higgins','C.');
-INSERT INTO "Names" VALUES(71,'Paul','Fischer','Marcus');
-INSERT INTO "Names" VALUES(72,'William','Taylor','James');
-INSERT INTO "Names" VALUES(73,'Rita','Cheng','Hartung');
-INSERT INTO "Names" VALUES(74,'Donald','Kieso','E.');
-INSERT INTO "Names" VALUES(75,'Jerry','Weygandt','J.');
-INSERT INTO "Names" VALUES(76,'Terry','Warfield','D.');
-INSERT INTO "Names" VALUES(77,'Lawrence','Revsine','');
-INSERT INTO "Names" VALUES(78,'Daniel','Collins','W.');
-INSERT INTO "Names" VALUES(79,'W.','Johnson','Bruce');
-INSERT INTO "Names" VALUES(80,'Nicholas','Sparks','');
-INSERT INTO "Names" VALUES(81,'Don','DeLillo','');
-INSERT INTO "Names" VALUES(82,'Stephen','King','');
-INSERT INTO "Names" VALUES(83,'Mark','Danielewski','Z.');
-INSERT INTO "Names" VALUES(84,'Michael','Romkey','');
-INSERT INTO "Names" VALUES(85,'Chuck','Palahniuk','');
-INSERT INTO "Names" VALUES(86,'Matthew','Delaney','');
-INSERT INTO "Names" VALUES(87,'Bernie','Wrightson','');
-INSERT INTO "Names" VALUES(88,'Jeffrey','Wooldridge','M.');
-INSERT INTO "Names" VALUES(89,'Steven','Root','J.');
-INSERT INTO "Names" VALUES(90,'Ken','Coffman','');
-INSERT INTO "Names" VALUES(91,'Gerald','Carter','');
-INSERT INTO "Names" VALUES(92,'Scott','Kelby','');
-INSERT INTO "Names" VALUES(93,'B.','Fogg','J.');
-INSERT INTO "Names" VALUES(94,'Michael','Meyers','');
-INSERT INTO "Names" VALUES(95,'Carl','Sagan','');
-INSERT INTO "Names" VALUES(96,'Alice','Sebold','');
-INSERT INTO "Names" VALUES(97,'Ian','McEwan','');
-INSERT INTO "Names" VALUES(98,'Nora','Roberts','');
-INSERT INTO "Names" VALUES(99,'Andy','Rae','');
-INSERT INTO "Names" VALUES(100,'Joseph','Truini','');
-INSERT INTO "Names" VALUES(101,'Terry','Pratchett','');
-INSERT INTO "Names" VALUES(102,'Jupiter','Terminus','');
-INSERT INTO "Names" VALUES(103,'Saturnus','Summanus','');
-INSERT INTO "Names" VALUES(104,'Gemini','Jove','');
-INSERT INTO "Names" VALUES(105,'Liber','Silvius','');
-INSERT INTO "Names" VALUES(106,'Vulcan','Mercury','');
-INSERT INTO "Names" VALUES(107,'Cupid','Vulcan','');
-INSERT INTO "Names" VALUES(108,'Summanus','Terminus','');
-INSERT INTO "Names" VALUES(109,'Tatius','Quirinus','');
-INSERT INTO "Names" VALUES(110,'Terminus','Liber','');
-INSERT INTO "Names" VALUES(111,'Faunus','Hercules','');
-INSERT INTO "Names" VALUES(112,'Italus','Numitor','');
-INSERT INTO "Names" VALUES(113,'Vulcan','Italus','');
-INSERT INTO "Names" VALUES(114,'Janus','Tatius','');
-INSERT INTO "Names" VALUES(115,'Italus','Romulus','');
-INSERT INTO "Names" VALUES(116,'Mercurius','Liber','');
-INSERT INTO "Names" VALUES(117,'Janus','Aries','');
-INSERT INTO "Names" VALUES(118,'Italus','Terminus','');
-INSERT INTO "Names" VALUES(119,'Summanus','Silvanus','');
-INSERT INTO "Names" VALUES(120,'Mars','Iovis','');
-INSERT INTO "Names" VALUES(121,'Liber','Vulcan','');
-INSERT INTO "Names" VALUES(123,'Ryan','Bone','Z');
-INSERT INTO "Names" VALUES(124,'Heather','Cook','L');
-INSERT INTO "Names" VALUES(125,'Charlie','Brown','');
-INSERT INTO "Names" VALUES(126,'Captian','Hook','Cap');
-INSERT INTO "Names" VALUES(127,'Bettina','Bair','');
-INSERT INTO "Names" VALUES(128,'Jane','Smith','Middlename');
-INSERT INTO "Names" VALUES(129,'John','Jameson','');
-INSERT INTO "Names" VALUES(130,'Brooke','Mott','M');
-INSERT INTO "Names" VALUES(131,'Vinny','Provenzale','');
-INSERT INTO "Names" VALUES(132,'Ryan','Parasilitti','');
-INSERT INTO "Names" VALUES(133,'Jane','Koch','');
-INSERT INTO "Names" VALUES(134,'Amanda','Mason','Elizabeth');
-INSERT INTO "Names" VALUES(135,'Ben','Way','');
-INSERT INTO "Names" VALUES(136,'Jay','Bobo','J');
-INSERT INTO "Names" VALUES(137,'Michael','Gee','');
-INSERT INTO "Names" VALUES(138,'Mark','Lorenz','');
-INSERT INTO "Names" VALUES(139,'Alan ','Gilbert','');
-INSERT INTO "Names" VALUES(140,'Ann ','Gilbert','');
-INSERT INTO "Names" VALUES(141,'Alex','Krusinski','Joseph');
-INSERT INTO "Names" VALUES(142,'Addison-Wesley Pub Co',NULL,NULL);
-INSERT INTO "Names" VALUES(143,'Addison-Wesley Publishing',NULL,NULL);
-INSERT INTO "Names" VALUES(144,'Anchor Books',NULL,NULL);
-INSERT INTO "Names" VALUES(145,'Back Bay Books',NULL,NULL);
-INSERT INTO "Names" VALUES(146,'Ballantine Books',NULL,NULL);
-INSERT INTO "Names" VALUES(147,'Berkley Pub Group',NULL,NULL);
-INSERT INTO "Names" VALUES(148,'Clarkson N. Potter',NULL,NULL);
-INSERT INTO "Names" VALUES(149,'Crown Pub',NULL,NULL);
-INSERT INTO "Names" VALUES(150,'Del Rey',NULL,NULL);
-INSERT INTO "Names" VALUES(151,'Dell Pub Co',NULL,NULL);
-INSERT INTO "Names" VALUES(152,'Donald M. Grant Publisher, Inc.',NULL,NULL);
-INSERT INTO "Names" VALUES(153,'Doubleday',NULL,NULL);
-INSERT INTO "Names" VALUES(154,'Fireside',NULL,NULL);
-INSERT INTO "Names" VALUES(155,'Gibbs Smith Publisher',NULL,NULL);
-INSERT INTO "Names" VALUES(156,'Harlequin',NULL,NULL);
-INSERT INTO "Names" VALUES(157,'Harper',NULL,NULL);
-INSERT INTO "Names" VALUES(158,'HarperCollins',NULL,NULL);
-INSERT INTO "Names" VALUES(159,'Harperperennial Library',NULL,NULL);
-INSERT INTO "Names" VALUES(160,'Harvard Univ Pr',NULL,NULL);
-INSERT INTO "Names" VALUES(161,'Harvest Books',NULL,NULL);
-INSERT INTO "Names" VALUES(162,'John Wiley & Sons',NULL,NULL);
-INSERT INTO "Names" VALUES(163,'Jossey-Bass',NULL,NULL);
-INSERT INTO "Names" VALUES(164,'Knopf',NULL,NULL);
-INSERT INTO "Names" VALUES(165,'Lark Books',NULL,NULL);
-INSERT INTO "Names" VALUES(166,'Little Brown & Company',NULL,NULL);
-INSERT INTO "Names" VALUES(167,'Macromedia Press',NULL,NULL);
-INSERT INTO "Names" VALUES(168,'McGraw-Hill Osborne Media',NULL,NULL);
-INSERT INTO "Names" VALUES(169,'McGraw-Hill Trade',NULL,NULL);
-INSERT INTO "Names" VALUES(170,'McGraw-Hill/Irwin',NULL,NULL);
-INSERT INTO "Names" VALUES(171,'MIT Press',NULL,NULL);
-INSERT INTO "Names" VALUES(172,'Morgan Kaufmann',NULL,NULL);
-INSERT INTO "Names" VALUES(173,'Multnomah Publishers Inc.',NULL,NULL);
-INSERT INTO "Names" VALUES(174,'New Riders Publishing',NULL,NULL);
-INSERT INTO "Names" VALUES(175,'O''Reilly & Associates',NULL,NULL);
-INSERT INTO "Names" VALUES(176,'Pantheon Books',NULL,NULL);
-INSERT INTO "Names" VALUES(177,'Penguin USA',NULL,NULL);
-INSERT INTO "Names" VALUES(178,'Perennial',NULL,NULL);
-INSERT INTO "Names" VALUES(179,'Perseus Publishing',NULL,NULL);
-INSERT INTO "Names" VALUES(180,'Picador',NULL,NULL);
-INSERT INTO "Names" VALUES(181,'Pocket Books',NULL,NULL);
-INSERT INTO "Names" VALUES(182,'Prentice Hall',NULL,NULL);
-INSERT INTO "Names" VALUES(183,'Prentice Hall PTR',NULL,NULL);
-INSERT INTO "Names" VALUES(184,'Publisher',NULL,NULL);
-INSERT INTO "Names" VALUES(185,'Putnam Pub Group',NULL,NULL);
-INSERT INTO "Names" VALUES(186,'Random House',NULL,NULL);
-INSERT INTO "Names" VALUES(187,'Random House Trade Paperbacks',NULL,NULL);
-INSERT INTO "Names" VALUES(188,'Schmidt Ink, Inc.',NULL,NULL);
-INSERT INTO "Names" VALUES(189,'Scribner',NULL,NULL);
-INSERT INTO "Names" VALUES(190,'Scribner Paperback Fiction',NULL,NULL);
-INSERT INTO "Names" VALUES(191,'Silhouette',NULL,NULL);
-INSERT INTO "Names" VALUES(192,'Simon & Schuster',NULL,NULL);
-INSERT INTO "Names" VALUES(193,'South-Western College Pub',NULL,NULL);
-INSERT INTO "Names" VALUES(194,'St. Martin''s Press',NULL,NULL);
-INSERT INTO "Names" VALUES(195,'Sybex',NULL,NULL);
-INSERT INTO "Names" VALUES(196,'Taunton Pr',NULL,NULL);
-INSERT INTO "Names" VALUES(197,'Vendome Pr',NULL,NULL);
-INSERT INTO "Names" VALUES(198,'Viking Press',NULL,NULL);
-INSERT INTO "Names" VALUES(199,'Vintage Books',NULL,NULL);
-INSERT INTO "Names" VALUES(200,'W.W. Norton & Company',NULL,NULL);
-INSERT INTO "Names" VALUES(201,'Warner Books',NULL,NULL);
-INSERT INTO "Names" VALUES(202,'Wolfram Media, Inc.',NULL,NULL);
-INSERT INTO "Names" VALUES(203,'Wrox Press Inc',NULL,NULL);
-INSERT INTO "Names" VALUES(204,'Warehouse 1',NULL,NULL);
-INSERT INTO "Names" VALUES(205,'Warehouse 2',NULL,NULL);
-INSERT INTO "Names" VALUES(206,'Warehouse 3',NULL,NULL);
-INSERT INTO "Names" VALUES(207,'Warehouse 4',NULL,NULL);
-INSERT INTO "Names" VALUES(208,'Warehouse 5',NULL,NULL);
-INSERT INTO "Names" VALUES(209,'Warehouse 6',NULL,NULL);
-INSERT INTO "Names" VALUES(210,'Warehouse 7',NULL,NULL);
-INSERT INTO "Names" VALUES(211,'Warehouse 8',NULL,NULL);
-INSERT INTO "Names" VALUES(212,'Warehouse 9',NULL,NULL);
-INSERT INTO "Names" VALUES(213,'Warehouse 10',NULL,NULL);
-INSERT INTO "Names" VALUES(214,'Warehouse 11',NULL,NULL);
-INSERT INTO "Names" VALUES(215,'Warehouse 12',NULL,NULL);
-INSERT INTO "Names" VALUES(216,'Warehouse 13',NULL,NULL);
-INSERT INTO "Names" VALUES(217,'Warehouse 14',NULL,NULL);
-INSERT INTO "Names" VALUES(218,'Warehouse 15',NULL,NULL);
-INSERT INTO "Names" VALUES(219,'Warehouse 16',NULL,NULL);
-INSERT INTO "Names" VALUES(220,'Warehouse 17',NULL,NULL);
-INSERT INTO "Names" VALUES(221,'Warehouse 18',NULL,NULL);
-INSERT INTO "Names" VALUES(222,'Warehouse 19',NULL,NULL);
-INSERT INTO "Names" VALUES(223,'Warehouse 20',NULL,NULL);
-INSERT INTO "Names" VALUES(224,'Employee 1',NULL,NULL);
-INSERT INTO "Names" VALUES(225,'Employee 2',NULL,NULL);
-INSERT INTO "Names" VALUES(226,'Employee 3',NULL,NULL);
-INSERT INTO "Names" VALUES(227,'Employee 4',NULL,NULL);
-INSERT INTO "Names" VALUES(228,'Employee 5',NULL,NULL);
-INSERT INTO "Names" VALUES(229,'Employee 6',NULL,NULL);
-INSERT INTO "Names" VALUES(230,'Employee 7',NULL,NULL);
-INSERT INTO "Names" VALUES(231,'Employee 8',NULL,NULL);
-INSERT INTO "Names" VALUES(232,'Employee 9',NULL,NULL);
-INSERT INTO "Names" VALUES(233,'Employee 10',NULL,NULL);
-INSERT INTO "Names" VALUES(234,'Employee 11',NULL,NULL);
-INSERT INTO "Names" VALUES(235,'Employee 12',NULL,NULL);
-INSERT INTO "Names" VALUES(236,'Employee 13',NULL,NULL);
-INSERT INTO "Names" VALUES(237,'Employee 14',NULL,NULL);
-INSERT INTO "Names" VALUES(238,'Employee 15',NULL,NULL);
-INSERT INTO "Names" VALUES(239,'Employee 16',NULL,NULL);
-INSERT INTO "Names" VALUES(240,'Employee 17',NULL,NULL);
-INSERT INTO "Names" VALUES(241,'Employee 18',NULL,NULL);
-INSERT INTO "Names" VALUES(242,'Employee 19',NULL,NULL);
-INSERT INTO "Names" VALUES(243,'Employee 20',NULL,NULL);
-CREATE TABLE Entity (
-id INT NOT NULL,
-nameid INT NOT NULL,
-phone VARCHAR(15),
-email VARCHAR(254),
-po_box VARCHAR(10),
-city VARCHAR(50),
-state VARCHAR(2),
-postalcode VARCHAR(50),
-country VARCHAR(255),
-address VARCHAR(255),
-
-PRIMARY KEY(id)
-FOREIGN KEY(nameid) REFERENCES Name(id)
-);
-INSERT INTO "Entity" VALUES('id','nameid','phone','email','po_box','country','city','state','zip','address');
-INSERT INTO "Entity" VALUES(1,1,'123456789','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(2,2,'123456790','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(3,3,'123456791','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(4,4,'123456792','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(5,5,'123456793','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(6,6,'123456794','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(7,7,'123456795','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(8,8,'123456796','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(9,9,'123456797','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(10,10,'123456798','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(11,11,'123456799','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(12,12,'123456800','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(13,13,'123456801','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(14,14,'123456802','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(15,15,'123456803','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(16,16,'123456804','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(17,17,'123456805','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(18,18,'123456806','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(19,19,'123456807','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(20,20,'123456808','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(21,21,'123456809','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(22,22,'123456810','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(23,23,'123456811','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(24,24,'123456812','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(25,25,'123456813','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(26,26,'123456814','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(27,27,'123456815','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(28,28,'123456816','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(29,29,'123456817','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(30,30,'123456818','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(31,31,'123456819','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(32,32,'123456820','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(33,33,'123456821','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(34,34,'123456822','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(35,35,'123456823','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(36,36,'123456824','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(37,37,'123456825','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(38,38,'123456826','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(39,39,'123456827','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(40,40,'123456828','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(41,41,'123456829','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(42,42,'123456830','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(43,43,'123456831','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(44,44,'123456832','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(45,45,'123456833','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(46,46,'123456834','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(47,47,'123456835','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(48,48,'123456836','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(49,49,'123456837','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(50,50,'123456838','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(51,51,'123456839','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(52,52,'123456840','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(53,53,'123456841','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(54,54,'123456842','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(55,55,'123456843','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(56,56,'123456844','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(57,57,'123456845','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(58,58,'123456846','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(59,59,'123456847','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(60,60,'123456848','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(61,61,'123456849','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(62,62,'123456850','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(63,63,'123456851','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(64,64,'123456852','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(65,65,'123456853','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(66,66,'123456854','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(67,67,'123456855','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(68,68,'123456856','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(69,69,'123456857','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(70,70,'123456858','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(71,71,'123456859','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(72,72,'123456860','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(73,73,'123456861','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(74,74,'123456862','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(75,75,'123456863','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(76,76,'123456864','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(77,77,'123456865','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(78,78,'123456866','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(79,79,'123456867','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(80,80,'123456868','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(81,81,'123456869','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(82,82,'123456870','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(83,83,'123456871','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(84,84,'123456872','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(85,85,'123456873','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(86,86,'123456874','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(87,87,'123456875','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(88,88,'123456876','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(89,89,'123456877','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(90,90,'123456878','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(91,91,'123456879','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(92,92,'123456880','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(93,93,'123456881','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(94,94,'123456882','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(95,95,'123456883','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(96,96,'123456884','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(97,97,'123456885','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(98,98,'123456886','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(99,99,'123456887','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(100,100,'123456888','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(101,101,'123456889','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(102,102,'123456890','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(103,103,'123456891','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(104,104,'123456892','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(105,105,'123456893','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(106,106,'123456894','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(107,107,'123456895','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(108,108,'123456896','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(109,109,'123456897','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(110,110,'123456898','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(111,111,'123456899','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(112,112,'123456900','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(113,113,'123456901','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(114,114,'123456902','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(115,115,'123456903','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(116,116,'123456904','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(117,117,'123456905','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(118,118,'123456906','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(119,119,'123456907','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(120,120,'123456908','author@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(121,121,'123456909','customer@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(122,122,'123456910','customer@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(123,123,'123456911','customer@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(124,124,'123456912','customer@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(125,125,'123456913','customer@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(126,126,'123456914','customer@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(127,127,'123456915','customer@example.com','','','Wellbourne','','','');
-INSERT INTO "Entity" VALUES(128,128,'123456916','customer@example.com','','','Newfort','','','');
-INSERT INTO "Entity" VALUES(129,129,'123456917','customer@example.com','','','Fairfall','','','');
-INSERT INTO "Entity" VALUES(130,130,'123456918','customer@example.com','','','Easthedge','','','');
-INSERT INTO "Entity" VALUES(131,131,'123456919','customer@example.com','','','Wyvernhaven','','','');
-INSERT INTO "Entity" VALUES(132,132,'123456920','customer@example.com','','','Irondeer','','','');
-INSERT INTO "Entity" VALUES(133,133,'123456921','customer@example.com','','','Shoreburn','','','');
-INSERT INTO "Entity" VALUES(134,134,'123456922','customer@example.com','','','Winternesse','','','');
-INSERT INTO "Entity" VALUES(135,135,'123456923','customer@example.com','','','Rosemist','','','');
-INSERT INTO "Entity" VALUES(136,136,'123456924','customer@example.com','','','Ironshore','','','');
-INSERT INTO "Entity" VALUES(137,137,'123456925','customer@example.com','','','Foxhaven','','','');
-INSERT INTO "Entity" VALUES(138,138,'123456926','customer@example.com','','','Highhaven','','','');
-INSERT INTO "Entity" VALUES(139,139,'123456927','customer@example.com','','','Ashcliff','','','');
-INSERT INTO "Entity" VALUES(140,140,'123456928','customer@example.com','','','Starryville','','','');
-INSERT INTO "Entity" VALUES(141,141,'123456929','publisher@example.com','','','Wooddale','','','');
-INSERT INTO "Entity" VALUES(142,142,'123456930','publisher@example.com','','','Goldrose','','','');
-INSERT INTO "Entity" VALUES(143,143,'123456931','publisher@example.com','','','Southsilver','','','');
-INSERT INTO "Entity" VALUES(144,144,'123456932','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(145,145,'123456933','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(146,146,'123456934','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(147,147,'123456935','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(148,148,'123456936','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(149,149,'123456937','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(150,150,'123456938','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(151,151,'123456939','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(152,152,'123456940','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(153,153,'123456941','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(154,154,'123456942','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(155,155,'123456943','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(156,156,'123456944','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(157,157,'123456945','publisher@example.com','','','Wellbourne','','','');
-INSERT INTO "Entity" VALUES(158,158,'123456946','publisher@example.com','','','Newfort','','','');
-INSERT INTO "Entity" VALUES(159,159,'123456947','publisher@example.com','','','Fairfall','','','');
-INSERT INTO "Entity" VALUES(160,160,'123456948','publisher@example.com','','','Easthedge','','','');
-INSERT INTO "Entity" VALUES(161,161,'123456949','publisher@example.com','','','Wyvernhaven','','','');
-INSERT INTO "Entity" VALUES(162,162,'123456950','publisher@example.com','','','Irondeer','','','');
-INSERT INTO "Entity" VALUES(163,163,'123456951','publisher@example.com','','','Shoreburn','','','');
-INSERT INTO "Entity" VALUES(164,164,'123456952','publisher@example.com','','','Winternesse','','','');
-INSERT INTO "Entity" VALUES(165,165,'123456953','publisher@example.com','','','Rosemist','','','');
-INSERT INTO "Entity" VALUES(166,166,'123456954','publisher@example.com','','','Ironshore','','','');
-INSERT INTO "Entity" VALUES(167,167,'123456955','publisher@example.com','','','Foxhaven','','','');
-INSERT INTO "Entity" VALUES(168,168,'123456956','publisher@example.com','','','Highhaven','','','');
-INSERT INTO "Entity" VALUES(169,169,'123456957','publisher@example.com','','','Ashcliff','','','');
-INSERT INTO "Entity" VALUES(170,170,'123456958','publisher@example.com','','','Starryville','','','');
-INSERT INTO "Entity" VALUES(171,171,'123456959','publisher@example.com','','','Wooddale','','','');
-INSERT INTO "Entity" VALUES(172,172,'123456960','publisher@example.com','','','Goldrose','','','');
-INSERT INTO "Entity" VALUES(173,173,'123456961','publisher@example.com','','','Southsilver','','','');
-INSERT INTO "Entity" VALUES(174,174,'123456962','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(175,175,'123456963','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(176,176,'123456964','publisher@example.com','','','','','','');
-INSERT INTO "Entity" VALUES(177,177,'123456965','publisher@example.com','','','Crystalmill','','','');
-INSERT INTO "Entity" VALUES(178,178,'123456966','publisher@example.com','','','Lorcliff','','','');
-INSERT INTO "Entity" VALUES(179,179,'123456967','publisher@example.com','','','Raycliff','','','');
-INSERT INTO "Entity" VALUES(180,180,'123456968','publisher@example.com','','','Freywall','','','');
-INSERT INTO "Entity" VALUES(181,181,'123456969','publisher@example.com','','','Vertpond','','','');
-INSERT INTO "Entity" VALUES(182,182,'123456970','publisher@example.com','','','Strongland','','','');
-INSERT INTO "Entity" VALUES(183,183,'123456971','publisher@example.com','','','Lochport','','','');
-INSERT INTO "Entity" VALUES(184,184,'123456972','publisher@example.com','','','Icefay','','','');
-INSERT INTO "Entity" VALUES(185,185,'123456973','publisher@example.com','','','Southshore','','','');
-INSERT INTO "Entity" VALUES(186,186,'123456974','publisher@example.com','','','Moormead','','','');
-INSERT INTO "Entity" VALUES(187,187,'123456975','publisher@example.com','','','Highpond','','','');
-INSERT INTO "Entity" VALUES(188,188,'123456976','publisher@example.com','','','Shadehollow','','','');
-INSERT INTO "Entity" VALUES(189,189,'123456977','publisher@example.com','','','Whitesilver','','','');
-INSERT INTO "Entity" VALUES(190,190,'123456978','publisher@example.com','','','Violetwick','','','');
-INSERT INTO "Entity" VALUES(191,191,'123456979','publisher@example.com','','','Merriwynne','','','');
-INSERT INTO "Entity" VALUES(192,192,'123456980','publisher@example.com','','','Draclyn','','','');
-INSERT INTO "Entity" VALUES(193,193,'123456981','publisher@example.com','','','Byness','','','');
-INSERT INTO "Entity" VALUES(194,194,'123456982','publisher@example.com','','','Brightglass','','','');
-INSERT INTO "Entity" VALUES(195,195,'123456983','publisher@example.com','','','Lightsummer','','','');
-INSERT INTO "Entity" VALUES(196,196,'123456984','publisher@example.com','','','Meadowmill','','','');
-INSERT INTO "Entity" VALUES(197,197,'123456985','publisher@example.com','','','Brookacre','','','');
-INSERT INTO "Entity" VALUES(198,198,'123456986','publisher@example.com','','','Lochnesse','','','');
-INSERT INTO "Entity" VALUES(199,199,'123456987','publisher@example.com','','','Esterelf','','','');
-INSERT INTO "Entity" VALUES(200,200,'123456988','publisher@example.com','','','Lorhill','','','');
-INSERT INTO "Entity" VALUES(201,201,'123456989','publisher@example.com','','','Crystalmist','','','');
-INSERT INTO "Entity" VALUES(202,202,'123456990','publisher@example.com','','','Hollowmarsh','','','');
-INSERT INTO "Entity" VALUES(203,203,'123456991','publisher@example.com','','','Marshlyn','','','');
-INSERT INTO "Entity" VALUES(204,204,'4169031234','warehouse@example.com','','USA','Columbus','OH','43201','123 Book Street W1');
-INSERT INTO "Entity" VALUES(205,205,'4169031235','warehouse@example.com','','USA','Columbus','OH','43201','123 Book Street W2');
-INSERT INTO "Entity" VALUES(206,206,'4169031236','warehouse@example.com','','USA','Columbus','OH','43201','124 Book Street W3');
-INSERT INTO "Entity" VALUES(207,207,'4169031237','warehouse@example.com','','USA','Columbus','OH','43201','124 Book Street W4');
-INSERT INTO "Entity" VALUES(208,208,'4169031238','warehouse@example.com','','USA','Columbus','OH','43201','125 Book Street W5');
-INSERT INTO "Entity" VALUES(209,209,'4169031239','warehouse@example.com','','USA','Columbus','OH','43201','125 Book Street W6');
-INSERT INTO "Entity" VALUES(210,210,'4169031240','warehouse@example.com','','USA','Columbus','OH','43201','126 Book Street W7');
-INSERT INTO "Entity" VALUES(211,211,'4169031241','warehouse@example.com','','USA','Columbus','OH','43201','126 Book Street W8');
-INSERT INTO "Entity" VALUES(212,212,'4169031242','warehouse@example.com','','USA','Columbus','OH','43201','127 Book Street W9');
-INSERT INTO "Entity" VALUES(213,213,'4169031243','warehouse@example.com','','USA','Columbus','OH','43201','127 Book Street W10');
-INSERT INTO "Entity" VALUES(214,214,'4169031244','warehouse@example.com','','USA','Columbus','OH','43201','128 Book Street W11');
-INSERT INTO "Entity" VALUES(215,215,'4169031245','warehouse@example.com','','USA','Columbus','OH','43201','128 Book Street W12');
-INSERT INTO "Entity" VALUES(216,216,'4169031246','warehouse@example.com','','USA','Columbus','OH','43201','129 Book Street W13');
-INSERT INTO "Entity" VALUES(217,217,'4169031247','warehouse@example.com','','USA','Columbus','OH','43201','129 Book Street W14');
-INSERT INTO "Entity" VALUES(218,218,'4169031248','warehouse@example.com','','USA','Columbus','OH','43201','130 Book Street W15');
-INSERT INTO "Entity" VALUES(219,219,'4169031249','warehouse@example.com','','USA','Columbus','OH','43201','130 Book Street W16');
-INSERT INTO "Entity" VALUES(220,220,'4169031250','warehouse@example.com','','USA','Columbus','OH','43201','131 Book Street W17');
-INSERT INTO "Entity" VALUES(221,221,'4169031251','warehouse@example.com','','USA','Columbus','OH','43201','131 Book Street W18');
-INSERT INTO "Entity" VALUES(222,222,'4169031253','warehouse@example.com','','USA','Columbus','OH','43201','132 Book Street W19');
-INSERT INTO "Entity" VALUES(223,223,'4169031254','warehouse@example.com','','USA','Columbus','OH','43201','133 Book Street W20');
-INSERT INTO "Entity" VALUES(224,224,'4164561254','employee@example.com','','USA','Columbus','OH','43201','100 BookEmployee Street');
-INSERT INTO "Entity" VALUES(225,225,'4164561255','employee@example.com','','USA','Columbus','OH','43201','101 BookEmployee Street');
-INSERT INTO "Entity" VALUES(226,226,'4164561256','employee@example.com','','USA','Columbus','OH','43201','102 BookEmployee Street');
-INSERT INTO "Entity" VALUES(227,227,'4164561257','employee@example.com','','USA','Columbus','OH','43201','103 BookEmployee Street');
-INSERT INTO "Entity" VALUES(228,228,'4164561258','employee@example.com','','USA','Columbus','OH','43201','104 BookEmployee Street');
-INSERT INTO "Entity" VALUES(229,229,'4164561259','employee@example.com','','USA','Columbus','OH','43201','105 BookEmployee Street');
-INSERT INTO "Entity" VALUES(230,230,'4164561260','employee@example.com','','USA','Columbus','OH','43201','106 BookEmployee Street');
-INSERT INTO "Entity" VALUES(231,231,'4164561261','employee@example.com','','USA','Columbus','OH','43201','107 BookEmployee Street');
-INSERT INTO "Entity" VALUES(232,232,'4164561262','employee@example.com','','USA','Columbus','OH','43201','108 BookEmployee Street');
-INSERT INTO "Entity" VALUES(233,233,'4164561263','employee@example.com','','USA','Columbus','OH','43201','109 BookEmployee Street');
-INSERT INTO "Entity" VALUES(234,234,'4164561264','employee@example.com','','USA','Columbus','OH','43201','110 BookEmployee Street');
-INSERT INTO "Entity" VALUES(235,235,'4164561265','employee@example.com','','USA','Columbus','OH','43201','111 BookEmployee Street');
-INSERT INTO "Entity" VALUES(236,236,'4164561266','employee@example.com','','USA','Columbus','OH','43201','112 BookEmployee Street');
-INSERT INTO "Entity" VALUES(237,237,'4164561267','employee@example.com','','USA','Columbus','OH','43201','113 BookEmployee Street');
-INSERT INTO "Entity" VALUES(238,238,'4164561268','employee@example.com','','USA','Columbus','OH','43201','114 BookEmployee Street');
-INSERT INTO "Entity" VALUES(239,239,'4164561269','employee@example.com','','USA','Columbus','OH','43201','115 BookEmployee Street');
-INSERT INTO "Entity" VALUES(240,240,'4164561270','employee@example.com','','USA','Columbus','OH','43201','116 BookEmployee Street');
-INSERT INTO "Entity" VALUES(241,241,'4164561271','employee@example.com','','USA','Columbus','OH','43201','117 BookEmployee Street');
-INSERT INTO "Entity" VALUES(242,242,'4164561272','employee@example.com','','USA','Columbus','OH','43201','118 BookEmployee Street');
-INSERT INTO "Entity" VALUES(243,243,'4164561273','employee@example.com','','USA','Columbus','OH','43201','119 BookEmployee Street');
-CREATE TABLE CreditCard (
-    cc_num INT NOT NULL,
-    eid INT NOT NULL,
-
-    PRIMARY KEY(eid),
-    FOREIGN KEY(eid) REFERENCES Entity(id)
-    );
-INSERT INTO "CreditCard" VALUES(1111222233334444,121);
-INSERT INTO "CreditCard" VALUES(1111222233334444,122);
-INSERT INTO "CreditCard" VALUES(1111222233334444,123);
-INSERT INTO "CreditCard" VALUES(1111222233334444,124);
-INSERT INTO "CreditCard" VALUES(1111222233334444,125);
-INSERT INTO "CreditCard" VALUES(1111222233334444,126);
-INSERT INTO "CreditCard" VALUES(1111222233334444,127);
-INSERT INTO "CreditCard" VALUES(1111222233334444,128);
-INSERT INTO "CreditCard" VALUES(1111222233334444,129);
-INSERT INTO "CreditCard" VALUES(1111222233334444,130);
-INSERT INTO "CreditCard" VALUES(1111222233334444,131);
-INSERT INTO "CreditCard" VALUES(1111222233334444,132);
-INSERT INTO "CreditCard" VALUES(1111222233334444,133);
-INSERT INTO "CreditCard" VALUES(1111222233334444,134);
-INSERT INTO "CreditCard" VALUES(1111222233334444,135);
-INSERT INTO "CreditCard" VALUES(1111222233334444,136);
-INSERT INTO "CreditCard" VALUES(1111222233334444,137);
-INSERT INTO "CreditCard" VALUES(1111222233334444,138);
-INSERT INTO "CreditCard" VALUES(1111222233334444,139);
-INSERT INTO "CreditCard" VALUES(1111222233334444,140);
-CREATE TABLE MonetaryTransaction (
-id INT NOT NULL,
-timestamp TIMESTAMP,
-amount INT NOT NULL DEFAULT(0),
-epayer INT NOT NULL,
-epayee INT NOT NULL,
-
-FOREIGN KEY(epayer) REFERENCES Entity(id),
-FOREIGN KEY(epayee) REFERENCES Entity(id),
-PRIMARY KEY(id));
-INSERT INTO "MonetaryTransaction" VALUES('id','timestamp','amount','epayer','epayee');
-INSERT INTO "MonetaryTransaction" VALUES(1,'8/1/2014 14:54:54',7.99,121,204);
-INSERT INTO "MonetaryTransaction" VALUES(2,'8/1/2014 14:54:54',7.99,122,205);
-INSERT INTO "MonetaryTransaction" VALUES(3,'8/1/2014 14:54:54',7.99,123,206);
-INSERT INTO "MonetaryTransaction" VALUES(4,'8/1/2014 14:54:54',7.99,124,207);
-INSERT INTO "MonetaryTransaction" VALUES(5,'8/1/2014 14:54:54',25.95,125,208);
-INSERT INTO "MonetaryTransaction" VALUES(6,'8/1/2014 14:54:54',18.95,126,209);
-INSERT INTO "MonetaryTransaction" VALUES(7,'8/1/2014 14:54:54',59.99,127,210);
-INSERT INTO "MonetaryTransaction" VALUES(8,'8/1/2014 14:54:54',17.49,128,211);
-INSERT INTO "MonetaryTransaction" VALUES(9,'8/1/2014 14:54:54',34.99,129,212);
-INSERT INTO "MonetaryTransaction" VALUES(10,'8/1/2014 14:54:54',122.5,130,213);
-INSERT INTO "MonetaryTransaction" VALUES(11,'8/1/2014 14:54:54',79.2,131,214);
-INSERT INTO "MonetaryTransaction" VALUES(12,'8/1/2014 14:54:54',126.67,132,215);
-INSERT INTO "MonetaryTransaction" VALUES(13,'8/1/2014 14:54:54',83,133,216);
-INSERT INTO "MonetaryTransaction" VALUES(14,'8/1/2014 14:54:54',14,134,217);
-INSERT INTO "MonetaryTransaction" VALUES(15,'8/1/2014 14:54:54',14,135,218);
-INSERT INTO "MonetaryTransaction" VALUES(16,'8/1/2014 14:54:54',13,136,219);
-INSERT INTO "MonetaryTransaction" VALUES(17,'8/1/2014 14:54:54',38.49,137,220);
-INSERT INTO "MonetaryTransaction" VALUES(18,'8/1/2014 14:54:54',70,138,221);
-INSERT INTO "MonetaryTransaction" VALUES(19,'8/1/2014 14:54:54',74.95,139,222);
-INSERT INTO "MonetaryTransaction" VALUES(20,'8/1/2014 14:54:54',48,140,223);
-CREATE TABLE CustomerOrder (
- id INT NOT NULL ,
- efrom INT NOT NULL,
- departure TIMESTAMP,
- eto INT NOT NULL,
- arrival TIMESTAMP,
- transactionid NOT NULL,
-
- FOREIGN KEY(transactionid) REFERENCES MonetaryTransaction(id),
- FOREIGN KEY(efrom) REFERENCES Entity(id),
- FOREIGN KEY(eto) REFERENCES Entity(id),
- PRIMARY KEY(id)
- );
-INSERT INTO "CustomerOrder" VALUES('id','efrom','departure','eto','arrival','transactionid');
-INSERT INTO "CustomerOrder" VALUES(1,204,'10/1/2010 12:12:12',121,'10/5/2010 10:20:34','1');
-INSERT INTO "CustomerOrder" VALUES(2,205,'10/2/2010 12:12:12',122,'10/6/2010 10:20:34','2');
-INSERT INTO "CustomerOrder" VALUES(3,206,'10/3/2010 12:12:12',123,'10/7/2010 10:20:34','3');
-INSERT INTO "CustomerOrder" VALUES(4,207,'10/4/2010 12:12:12',124,'10/8/2010 10:20:34','4');
-INSERT INTO "CustomerOrder" VALUES(5,208,'10/5/2010 12:12:12',125,'10/9/2010 10:20:34','5');
-INSERT INTO "CustomerOrder" VALUES(6,209,'10/6/2010 12:12:12',126,'10/10/2010 10:20:34','6');
-INSERT INTO "CustomerOrder" VALUES(7,210,'10/7/2010 12:12:12',127,'10/11/2010 10:20:34','7');
-INSERT INTO "CustomerOrder" VALUES(8,211,'10/8/2010 12:12:12',128,'10/12/2010 10:20:34','8');
-INSERT INTO "CustomerOrder" VALUES(9,212,'10/9/2010 12:12:12',129,'10/13/2010 10:20:34','9');
-INSERT INTO "CustomerOrder" VALUES(10,213,'10/10/2010 12:12:12',130,'10/14/2010 10:20:34','10');
-INSERT INTO "CustomerOrder" VALUES(11,214,'10/11/2010 12:12:12',131,'10/15/2010 10:20:34','11');
-INSERT INTO "CustomerOrder" VALUES(12,215,'10/12/2010 12:12:12',132,'10/16/2010 10:20:34','12');
-INSERT INTO "CustomerOrder" VALUES(13,216,'10/13/2010 12:12:12',133,'10/17/2010 10:20:34','13');
-INSERT INTO "CustomerOrder" VALUES(14,217,'10/14/2010 12:12:12',134,'10/18/2010 10:20:34','14');
-INSERT INTO "CustomerOrder" VALUES(15,218,'10/15/2010 12:12:12',135,'10/19/2010 10:20:34','15');
-INSERT INTO "CustomerOrder" VALUES(16,219,'10/16/2010 12:12:12',136,'10/20/2010 10:20:34','16');
-INSERT INTO "CustomerOrder" VALUES(17,220,'10/17/2010 12:12:12',137,'10/21/2010 10:20:34','17');
-INSERT INTO "CustomerOrder" VALUES(18,221,'10/18/2010 12:12:12',138,'10/22/2010 10:20:34','18');
-INSERT INTO "CustomerOrder" VALUES(19,222,'10/19/2010 12:12:12',139,'10/23/2010 10:20:34','19');
-INSERT INTO "CustomerOrder" VALUES(20,223,'10/20/2010 12:12:12',140,'10/24/2010 10:20:34','20');
+CREATE TABLE creditcard
+  (
+     cc_num CHAR(16) NOT NULL,
+     eid    INT NOT NULL,
+     PRIMARY KEY(eid),
+     FOREIGN KEY(eid) REFERENCES entity(id)
+  );
+INSERT INTO "creditcard" VALUES('1111222233334444',121);
+INSERT INTO "creditcard" VALUES('1111222233334444',122);
+INSERT INTO "creditcard" VALUES('1111222233334444',123);
+INSERT INTO "creditcard" VALUES('1111222233334444',124);
+INSERT INTO "creditcard" VALUES('1111222233334444',125);
+INSERT INTO "creditcard" VALUES('1111222233334444',126);
+INSERT INTO "creditcard" VALUES('1111222233334444',127);
+INSERT INTO "creditcard" VALUES('1111222233334444',128);
+INSERT INTO "creditcard" VALUES('1111222233334444',129);
+INSERT INTO "creditcard" VALUES('1111222233334444',130);
+INSERT INTO "creditcard" VALUES('1111222233334444',131);
+INSERT INTO "creditcard" VALUES('1111222233334444',132);
+INSERT INTO "creditcard" VALUES('1111222233334444',133);
+INSERT INTO "creditcard" VALUES('1111222233334444',134);
+INSERT INTO "creditcard" VALUES('1111222233334444',135);
+INSERT INTO "creditcard" VALUES('1111222233334444',136);
+INSERT INTO "creditcard" VALUES('1111222233334444',137);
+INSERT INTO "creditcard" VALUES('1111222233334444',138);
+INSERT INTO "creditcard" VALUES('1111222233334444',139);
+INSERT INTO "creditcard" VALUES('1111222233334444',140);
+CREATE TABLE names
+  (
+     id    INTEGER NOT NULL,
+     fname VARCHAR(50) NOT NULL,
+     lname VARCHAR(50),
+     mname VARCHAR(50),
+     PRIMARY KEY(id)
+  );
+INSERT INTO "names" VALUES(1,'Chip','','Dawes');
+INSERT INTO "names" VALUES(2,'Biju','','Thomas');
+INSERT INTO "names" VALUES(3,'Doug','','Stuns');
+INSERT INTO "names" VALUES(4,'Matthew','','Weishan');
+INSERT INTO "names" VALUES(5,'Joseph','C.','Johnson');
+INSERT INTO "names" VALUES(6,'Brian','','Knight');
+INSERT INTO "names" VALUES(7,'Ralph','','Kimball');
+INSERT INTO "names" VALUES(8,'Margy','','Ross');
+INSERT INTO "names" VALUES(9,'Bill','','Mann');
+INSERT INTO "names" VALUES(10,'Ian','H.','Witten');
+INSERT INTO "names" VALUES(11,'Eibe','','Frank');
+INSERT INTO "names" VALUES(12,'Robert','D.','Schmidt');
+INSERT INTO "names" VALUES(13,'Ken','','Henderson');
+INSERT INTO "names" VALUES(14,'Paul','','Litwin');
+INSERT INTO "names" VALUES(15,'Ken','','Getz');
+INSERT INTO "names" VALUES(16,'Mike','','Gunderloy');
+INSERT INTO "names" VALUES(17,'Ben','','Forta');
+INSERT INTO "names" VALUES(18,'Nate','','Weiss');
+INSERT INTO "names" VALUES(19,'Leon','','Chalnick');
+INSERT INTO "names" VALUES(20,'Angela','C.','Buraglia');
+INSERT INTO "names" VALUES(21,'Ramez','A.','Elmasri');
+INSERT INTO "names" VALUES(22,'Shamkant','B.','Navathe');
+INSERT INTO "names" VALUES(23,'Rob','','Vieira');
+INSERT INTO "names" VALUES(24,'Paul','','DuBois');
+INSERT INTO "names" VALUES(25,'Laurel','K.','Hamilton');
+INSERT INTO "names" VALUES(26,'Sue','Monk','Kidd');
+INSERT INTO "names" VALUES(27,'Tara','','Calishain');
+INSERT INTO "names" VALUES(28,'Rael','','Dornfest');
+INSERT INTO "names" VALUES(29,'Jay','P.','Decima');
+INSERT INTO "names" VALUES(30,'Wladyslaw','','Szpilman');
+INSERT INTO "names" VALUES(31,'Roma','','Ligocka');
+INSERT INTO "names" VALUES(32,'Michael','','Cunningham');
+INSERT INTO "names" VALUES(33,'Larry','','Bossidy');
+INSERT INTO "names" VALUES(34,'Ram','','Charan');
+INSERT INTO "names" VALUES(35,'Charles','','Burck');
+INSERT INTO "names" VALUES(36,'James','','Patterson');
+INSERT INTO "names" VALUES(37,'Andrew','','Gross');
+INSERT INTO "names" VALUES(38,'Jeffery','','Deaver');
+INSERT INTO "names" VALUES(39,'Jacquelyn','','Mitchard');
+INSERT INTO "names" VALUES(40,'Patrick','','Lencioni');
+INSERT INTO "names" VALUES(41,'Mary','Higgins','Clark');
+INSERT INTO "names" VALUES(42,'Dee','','Henderson');
+INSERT INTO "names" VALUES(43,'Ann','','Patchett');
+INSERT INTO "names" VALUES(44,'Karen','Marie','Moning');
+INSERT INTO "names" VALUES(45,'Suzanne','','Brockmann');
+INSERT INTO "names" VALUES(46,'Steven','','Pinker');
+INSERT INTO "names" VALUES(47,'Albert-László','','Barabási');
+INSERT INTO "names" VALUES(48,'Edward','Osborne','Wilson');
+INSERT INTO "names" VALUES(49,'Stephen','','Wolfram');
+INSERT INTO "names" VALUES(50,'Harold','','McGee');
+INSERT INTO "names" VALUES(51,'Francis','D. K.','Ching');
+INSERT INTO "names" VALUES(52,'Cassandra','','Adams');
+INSERT INTO "names" VALUES(53,'Virginia','','McAlester');
+INSERT INTO "names" VALUES(54,'Lee','','McAlester');
+INSERT INTO "names" VALUES(55,'Bryan','','Burkhart');
+INSERT INTO "names" VALUES(56,'Allison','','Arieff');
+INSERT INTO "names" VALUES(57,'Ralph','R.','Kylloe');
+INSERT INTO "names" VALUES(58,'Leslie','Plummer','Clagett');
+INSERT INTO "names" VALUES(59,'Gerard','','Gefen');
+INSERT INTO "names" VALUES(60,'Christine','','Bastin');
+INSERT INTO "names" VALUES(61,'Jacques','','Evrard');
+INSERT INTO "names" VALUES(62,'Donald','','Kaufman');
+INSERT INTO "names" VALUES(63,'Taffy','','Dahl');
+INSERT INTO "names" VALUES(64,'Laurel','','Graeber');
+INSERT INTO "names" VALUES(65,'Tina','','Freeman');
+INSERT INTO "names" VALUES(66,'Simon','','Benninga');
+INSERT INTO "names" VALUES(67,'Benjamin','','Czaczkes');
+INSERT INTO "names" VALUES(68,'Mark','','Grinblatt');
+INSERT INTO "names" VALUES(69,'Sheridan','','Titman');
+INSERT INTO "names" VALUES(70,'Robert','C.','Higgins');
+INSERT INTO "names" VALUES(71,'Paul','Marcus','Fischer');
+INSERT INTO "names" VALUES(72,'William','James','Taylor');
+INSERT INTO "names" VALUES(73,'Rita','Hartung','Cheng');
+INSERT INTO "names" VALUES(74,'Donald','E.','Kieso');
+INSERT INTO "names" VALUES(75,'Jerry','J.','Weygandt');
+INSERT INTO "names" VALUES(76,'Terry','D.','Warfield');
+INSERT INTO "names" VALUES(77,'Lawrence','','Revsine');
+INSERT INTO "names" VALUES(78,'Daniel','W.','Collins');
+INSERT INTO "names" VALUES(79,'W.','Bruce','Johnson');
+INSERT INTO "names" VALUES(80,'Nicholas','','Sparks');
+INSERT INTO "names" VALUES(81,'Don','','DeLillo');
+INSERT INTO "names" VALUES(82,'Stephen','','King');
+INSERT INTO "names" VALUES(83,'Mark','Z.','Danielewski');
+INSERT INTO "names" VALUES(84,'Michael','','Romkey');
+INSERT INTO "names" VALUES(85,'Chuck','','Palahniuk');
+INSERT INTO "names" VALUES(86,'Matthew','','Delaney');
+INSERT INTO "names" VALUES(87,'Bernie','','Wrightson');
+INSERT INTO "names" VALUES(88,'Jeffrey','M.','Wooldridge');
+INSERT INTO "names" VALUES(89,'Steven','J.','Root');
+INSERT INTO "names" VALUES(90,'Ken','','Coffman');
+INSERT INTO "names" VALUES(91,'Gerald','','Carter');
+INSERT INTO "names" VALUES(92,'Scott','','Kelby');
+INSERT INTO "names" VALUES(93,'B.','J.','Fogg');
+INSERT INTO "names" VALUES(94,'Michael','','Meyers');
+INSERT INTO "names" VALUES(95,'Carl','','Sagan');
+INSERT INTO "names" VALUES(96,'Alice','','Sebold');
+INSERT INTO "names" VALUES(97,'Ian','','McEwan');
+INSERT INTO "names" VALUES(98,'Nora','','Roberts');
+INSERT INTO "names" VALUES(99,'Andy','','Rae');
+INSERT INTO "names" VALUES(100,'Joseph','','Truini');
+INSERT INTO "names" VALUES(101,'Terry','','Pratchett');
+INSERT INTO "names" VALUES(102,'Jupiter','','Terminus');
+INSERT INTO "names" VALUES(103,'Saturnus','','Summanus');
+INSERT INTO "names" VALUES(104,'Gemini','','Jove');
+INSERT INTO "names" VALUES(105,'Liber','','Silvius');
+INSERT INTO "names" VALUES(106,'Vulcan','','Mercury');
+INSERT INTO "names" VALUES(107,'Cupid','','Vulcan');
+INSERT INTO "names" VALUES(108,'Summanus','','Terminus');
+INSERT INTO "names" VALUES(109,'Tatius','','Quirinus');
+INSERT INTO "names" VALUES(110,'Terminus','','Liber');
+INSERT INTO "names" VALUES(111,'Faunus','','Hercules');
+INSERT INTO "names" VALUES(112,'Italus','','Numitor');
+INSERT INTO "names" VALUES(113,'Vulcan','','Italus');
+INSERT INTO "names" VALUES(114,'Janus','','Tatius');
+INSERT INTO "names" VALUES(115,'Italus','','Romulus');
+INSERT INTO "names" VALUES(116,'Mercurius','','Liber');
+INSERT INTO "names" VALUES(117,'Janus','','Aries');
+INSERT INTO "names" VALUES(118,'Italus','','Terminus');
+INSERT INTO "names" VALUES(119,'Summanus','','Silvanus');
+INSERT INTO "names" VALUES(120,'Mars','','Iovis');
+INSERT INTO "names" VALUES(121,'Liber','','Vulcan');
+INSERT INTO "names" VALUES(123,'Ryan','Z','Bone');
+INSERT INTO "names" VALUES(124,'Heather','L','Cook');
+INSERT INTO "names" VALUES(125,'Charlie','','Brown');
+INSERT INTO "names" VALUES(126,'Captian','Cap','Hook');
+INSERT INTO "names" VALUES(127,'Bettina','','Bair');
+INSERT INTO "names" VALUES(128,'Jane','Middlename','Smith');
+INSERT INTO "names" VALUES(129,'John','','Jameson');
+INSERT INTO "names" VALUES(130,'Brooke','M','Mott');
+INSERT INTO "names" VALUES(131,'Vinny','','Provenzale');
+INSERT INTO "names" VALUES(132,'Ryan','','Parasilitti');
+INSERT INTO "names" VALUES(133,'Jane','','Koch');
+INSERT INTO "names" VALUES(134,'Amanda','Elizabeth','Mason');
+INSERT INTO "names" VALUES(135,'Ben','','Way');
+INSERT INTO "names" VALUES(136,'Jay','J','Bobo');
+INSERT INTO "names" VALUES(137,'Michael','','Gee');
+INSERT INTO "names" VALUES(138,'Mark','','Lorenz');
+INSERT INTO "names" VALUES(139,'Alan ','','Gilbert');
+INSERT INTO "names" VALUES(140,'Ann ','','Gilbert');
+INSERT INTO "names" VALUES(141,'Alex','Joseph','Krusinski');
+INSERT INTO "names" VALUES(142,'Addison-Wesley Pub Co','','');
+INSERT INTO "names" VALUES(143,'Addison-Wesley Publishing','','');
+INSERT INTO "names" VALUES(144,'Anchor Books','','');
+INSERT INTO "names" VALUES(145,'Back Bay Books','','');
+INSERT INTO "names" VALUES(146,'Ballantine Books','','');
+INSERT INTO "names" VALUES(147,'Berkley Pub Group','','');
+INSERT INTO "names" VALUES(148,'Clarkson N. Potter','','');
+INSERT INTO "names" VALUES(149,'Crown Pub','','');
+INSERT INTO "names" VALUES(150,'Del Rey','','');
+INSERT INTO "names" VALUES(151,'Dell Pub Co','','');
+INSERT INTO "names" VALUES(152,'Donald M. Grant Publisher, Inc.','','');
+INSERT INTO "names" VALUES(153,'Doubleday','','');
+INSERT INTO "names" VALUES(154,'Fireside','','');
+INSERT INTO "names" VALUES(155,'Gibbs Smith Publisher','','');
+INSERT INTO "names" VALUES(156,'Harlequin','','');
+INSERT INTO "names" VALUES(157,'Harper','','');
+INSERT INTO "names" VALUES(158,'HarperCollins','','');
+INSERT INTO "names" VALUES(159,'Harperperennial Library','','');
+INSERT INTO "names" VALUES(160,'Harvard Univ Pr','','');
+INSERT INTO "names" VALUES(161,'Harvest Books','','');
+INSERT INTO "names" VALUES(162,'John Wiley & Sons','','');
+INSERT INTO "names" VALUES(163,'Jossey-Bass','','');
+INSERT INTO "names" VALUES(164,'Knopf','','');
+INSERT INTO "names" VALUES(165,'Lark Books','','');
+INSERT INTO "names" VALUES(166,'Little Brown & Company','','');
+INSERT INTO "names" VALUES(167,'Macromedia Press','','');
+INSERT INTO "names" VALUES(168,'McGraw-Hill Osborne Media','','');
+INSERT INTO "names" VALUES(169,'McGraw-Hill Trade','','');
+INSERT INTO "names" VALUES(170,'McGraw-Hill/Irwin','','');
+INSERT INTO "names" VALUES(171,'MIT Press','','');
+INSERT INTO "names" VALUES(172,'Morgan Kaufmann','','');
+INSERT INTO "names" VALUES(173,'Multnomah Publishers Inc.','','');
+INSERT INTO "names" VALUES(174,'New Riders Publishing','','');
+INSERT INTO "names" VALUES(175,'O''Reilly & Associates','','');
+INSERT INTO "names" VALUES(176,'Pantheon Books','','');
+INSERT INTO "names" VALUES(177,'Penguin USA','','');
+INSERT INTO "names" VALUES(178,'Perennial','','');
+INSERT INTO "names" VALUES(179,'Perseus Publishing','','');
+INSERT INTO "names" VALUES(180,'Picador','','');
+INSERT INTO "names" VALUES(181,'Pocket Books','','');
+INSERT INTO "names" VALUES(182,'Prentice Hall','','');
+INSERT INTO "names" VALUES(183,'Prentice Hall PTR','','');
+INSERT INTO "names" VALUES(184,'Publisher','','');
+INSERT INTO "names" VALUES(185,'Putnam Pub Group','','');
+INSERT INTO "names" VALUES(186,'Random House','','');
+INSERT INTO "names" VALUES(187,'Random House Trade Paperbacks','','');
+INSERT INTO "names" VALUES(188,'Schmidt Ink, Inc.','','');
+INSERT INTO "names" VALUES(189,'Scribner','','');
+INSERT INTO "names" VALUES(190,'Scribner Paperback Fiction','','');
+INSERT INTO "names" VALUES(191,'Silhouette','','');
+INSERT INTO "names" VALUES(192,'Simon & Schuster','','');
+INSERT INTO "names" VALUES(193,'South-Western College Pub','','');
+INSERT INTO "names" VALUES(194,'St. Martin''s Press','','');
+INSERT INTO "names" VALUES(195,'Sybex','','');
+INSERT INTO "names" VALUES(196,'Taunton Pr','','');
+INSERT INTO "names" VALUES(197,'Vendome Pr','','');
+INSERT INTO "names" VALUES(198,'Viking Press','','');
+INSERT INTO "names" VALUES(199,'Vintage Books','','');
+INSERT INTO "names" VALUES(200,'W.W. Norton & Company','','');
+INSERT INTO "names" VALUES(201,'Warner Books','','');
+INSERT INTO "names" VALUES(202,'Wolfram Media, Inc.','','');
+INSERT INTO "names" VALUES(203,'Wrox Press Inc','','');
+INSERT INTO "names" VALUES(204,'Warehouse 1','','');
+INSERT INTO "names" VALUES(205,'Warehouse 2','','');
+INSERT INTO "names" VALUES(206,'Warehouse 3','','');
+INSERT INTO "names" VALUES(207,'Warehouse 4','','');
+INSERT INTO "names" VALUES(208,'Warehouse 5','','');
+INSERT INTO "names" VALUES(209,'Warehouse 6','','');
+INSERT INTO "names" VALUES(210,'Warehouse 7','','');
+INSERT INTO "names" VALUES(211,'Warehouse 8','','');
+INSERT INTO "names" VALUES(212,'Warehouse 9','','');
+INSERT INTO "names" VALUES(213,'Warehouse 10','','');
+INSERT INTO "names" VALUES(214,'Warehouse 11','','');
+INSERT INTO "names" VALUES(215,'Warehouse 12','','');
+INSERT INTO "names" VALUES(216,'Warehouse 13','','');
+INSERT INTO "names" VALUES(217,'Warehouse 14','','');
+INSERT INTO "names" VALUES(218,'Warehouse 15','','');
+INSERT INTO "names" VALUES(219,'Warehouse 16','','');
+INSERT INTO "names" VALUES(220,'Warehouse 17','','');
+INSERT INTO "names" VALUES(221,'Warehouse 18','','');
+INSERT INTO "names" VALUES(222,'Warehouse 19','','');
+INSERT INTO "names" VALUES(223,'Warehouse 20','','');
+INSERT INTO "names" VALUES(224,'Employee 1','','');
+INSERT INTO "names" VALUES(225,'Employee 2','','');
+INSERT INTO "names" VALUES(226,'Employee 3','','');
+INSERT INTO "names" VALUES(227,'Employee 4','','');
+INSERT INTO "names" VALUES(228,'Employee 5','','');
+INSERT INTO "names" VALUES(229,'Employee 6','','');
+INSERT INTO "names" VALUES(230,'Employee 7','','');
+INSERT INTO "names" VALUES(231,'Employee 8','','');
+INSERT INTO "names" VALUES(232,'Employee 9','','');
+INSERT INTO "names" VALUES(233,'Employee 10','','');
+INSERT INTO "names" VALUES(234,'Employee 11','','');
+INSERT INTO "names" VALUES(235,'Employee 12','','');
+INSERT INTO "names" VALUES(236,'Employee 13','','');
+INSERT INTO "names" VALUES(237,'Employee 14','','');
+INSERT INTO "names" VALUES(238,'Employee 15','','');
+INSERT INTO "names" VALUES(239,'Employee 16','','');
+INSERT INTO "names" VALUES(240,'Employee 17','','');
+INSERT INTO "names" VALUES(241,'Employee 18','','');
+INSERT INTO "names" VALUES(242,'Employee 19','','');
+INSERT INTO "names" VALUES(243,'Employee 20','','');
+INSERT INTO "names" VALUES(244,'David','Wallace','Foster');
+INSERT INTO "names" VALUES(245,'OSU UniPrint','','');
+CREATE TABLE customerorder
+  (
+     id            INTEGER NOT NULL,
+     efrom         INT NOT NULL,
+     departure     TIMESTAMP,
+     eto           INT NOT NULL,
+     arrival       TIMESTAMP,
+     transactionid NOT NULL,
+     FOREIGN KEY(transactionid) REFERENCES monetarytransaction(id),
+     FOREIGN KEY(efrom) REFERENCES entity(id),
+     FOREIGN KEY(eto) REFERENCES entity(id),
+     PRIMARY KEY(id)
+  );
+INSERT INTO "customerorder" VALUES(1,204,'10/1/2010 12:12:12',121,'10/5/2010 10:20:34','1');
+INSERT INTO "customerorder" VALUES(2,205,'10/2/2010 12:12:12',122,'10/6/2010 10:20:34','2');
+INSERT INTO "customerorder" VALUES(3,206,'10/3/2010 12:12:12',123,'10/7/2010 10:20:34','3');
+INSERT INTO "customerorder" VALUES(4,207,'10/4/2010 12:12:12',124,'10/8/2010 10:20:34','4');
+INSERT INTO "customerorder" VALUES(5,208,'10/5/2010 12:12:12',125,'10/9/2010 10:20:34','5');
+INSERT INTO "customerorder" VALUES(6,209,'10/6/2010 12:12:12',126,'10/10/2010 10:20:34','6');
+INSERT INTO "customerorder" VALUES(7,210,'10/7/2010 12:12:12',127,'10/11/2010 10:20:34','7');
+INSERT INTO "customerorder" VALUES(8,211,'10/8/2010 12:12:12',128,'10/12/2010 10:20:34','8');
+INSERT INTO "customerorder" VALUES(9,212,'10/9/2010 12:12:12',129,'10/13/2010 10:20:34','9');
+INSERT INTO "customerorder" VALUES(10,213,'10/10/2010 12:12:12',130,'10/14/2010 10:20:34','10');
+INSERT INTO "customerorder" VALUES(11,214,'10/11/2010 12:12:12',131,'10/15/2010 10:20:34','11');
+INSERT INTO "customerorder" VALUES(12,215,'10/12/2010 12:12:12',132,'10/16/2010 10:20:34','12');
+INSERT INTO "customerorder" VALUES(13,216,'10/13/2010 12:12:12',133,'10/17/2010 10:20:34','13');
+INSERT INTO "customerorder" VALUES(14,217,'10/14/2010 12:12:12',134,'10/18/2010 10:20:34','14');
+INSERT INTO "customerorder" VALUES(15,218,'10/15/2010 12:12:12',135,'10/19/2010 10:20:34','15');
+INSERT INTO "customerorder" VALUES(16,219,'10/16/2010 12:12:12',136,'10/20/2010 10:20:34','16');
+INSERT INTO "customerorder" VALUES(17,220,'10/17/2010 12:12:12',137,'10/21/2010 10:20:34','17');
+INSERT INTO "customerorder" VALUES(18,221,'10/18/2010 12:12:12',138,'10/22/2010 10:20:34','18');
+INSERT INTO "customerorder" VALUES(19,222,'10/19/2010 12:12:12',139,'10/23/2010 10:20:34','19');
+INSERT INTO "customerorder" VALUES(20,223,'10/20/2010 12:12:12',140,'10/24/2010 10:20:34','20');
+CREATE TABLE monetarytransaction
+  (
+     id        INTEGER NOT NULL,
+     timestamp TIMESTAMP,
+     amount    INT NOT NULL DEFAULT(0),
+     epayer    INT NOT NULL,
+     epayee    INT NOT NULL,
+     FOREIGN KEY(epayer) REFERENCES entity(id),
+     FOREIGN KEY(epayee) REFERENCES entity(id),
+     PRIMARY KEY(id)
+  );
+INSERT INTO "monetarytransaction" VALUES(1,'8/1/2014 14:54:54',7.99,121,204);
+INSERT INTO "monetarytransaction" VALUES(2,'8/1/2014 14:54:54',7.99,122,205);
+INSERT INTO "monetarytransaction" VALUES(3,'8/1/2014 14:54:54',7.99,123,206);
+INSERT INTO "monetarytransaction" VALUES(4,'8/1/2014 14:54:54',7.99,124,207);
+INSERT INTO "monetarytransaction" VALUES(5,'8/1/2014 14:54:54',25.95,125,208);
+INSERT INTO "monetarytransaction" VALUES(6,'8/1/2014 14:54:54',18.95,126,209);
+INSERT INTO "monetarytransaction" VALUES(7,'8/1/2014 14:54:54',59.99,127,210);
+INSERT INTO "monetarytransaction" VALUES(8,'8/1/2014 14:54:54',17.49,128,211);
+INSERT INTO "monetarytransaction" VALUES(9,'8/1/2014 14:54:54',34.99,129,212);
+INSERT INTO "monetarytransaction" VALUES(10,'8/1/2014 14:54:54',122.5,130,213);
+INSERT INTO "monetarytransaction" VALUES(11,'8/1/2014 14:54:54',79.2,131,214);
+INSERT INTO "monetarytransaction" VALUES(12,'8/1/2014 14:54:54',126.67,132,215);
+INSERT INTO "monetarytransaction" VALUES(13,'8/1/2014 14:54:54',83,133,216);
+INSERT INTO "monetarytransaction" VALUES(14,'8/1/2014 14:54:54',14,134,217);
+INSERT INTO "monetarytransaction" VALUES(15,'8/1/2014 14:54:54',14,135,218);
+INSERT INTO "monetarytransaction" VALUES(16,'8/1/2014 14:54:54',13,136,219);
+INSERT INTO "monetarytransaction" VALUES(17,'8/1/2014 14:54:54',38.49,137,220);
+INSERT INTO "monetarytransaction" VALUES(18,'8/1/2014 14:54:54',70,138,221);
+INSERT INTO "monetarytransaction" VALUES(19,'8/1/2014 14:54:54',74.95,139,222);
+INSERT INTO "monetarytransaction" VALUES(20,'8/1/2014 14:54:54',48,140,223);
+CREATE TABLE entity
+  (
+     id         INTEGER NOT NULL,
+     nameid     INT NOT NULL,
+     phone      VARCHAR(15),
+     email      VARCHAR(254),
+     po_box     VARCHAR(10),
+     country    VARCHAR(50),
+     city       VARCHAR(50),
+     state      VARCHAR(2),
+     postalcode VARCHAR(50),
+     address    VARCHAR(255),
+     PRIMARY KEY(id)
+     FOREIGN KEY(nameid) REFERENCES names(id)
+  );
+INSERT INTO "entity" VALUES(1,1,'123456789','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(2,2,'123456790','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(3,3,'123456791','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(4,4,'123456792','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(5,5,'123456793','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(6,6,'123456794','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(7,7,'123456795','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(8,8,'123456796','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(9,9,'123456797','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(10,10,'123456798','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(11,11,'123456799','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(12,12,'123456800','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(13,13,'123456801','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(14,14,'123456802','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(15,15,'123456803','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(16,16,'123456804','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(17,17,'123456805','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(18,18,'123456806','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(19,19,'123456807','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(20,20,'123456808','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(21,21,'123456809','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(22,22,'123456810','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(23,23,'123456811','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(24,24,'123456812','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(25,25,'123456813','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(26,26,'123456814','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(27,27,'123456815','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(28,28,'123456816','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(29,29,'123456817','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(30,30,'123456818','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(31,31,'123456819','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(32,32,'123456820','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(33,33,'123456821','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(34,34,'123456822','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(35,35,'123456823','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(36,36,'123456824','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(37,37,'123456825','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(38,38,'123456826','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(39,39,'123456827','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(40,40,'123456828','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(41,41,'123456829','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(42,42,'123456830','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(43,43,'123456831','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(44,44,'123456832','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(45,45,'123456833','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(46,46,'123456834','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(47,47,'123456835','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(48,48,'123456836','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(49,49,'123456837','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(50,50,'123456838','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(51,51,'123456839','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(52,52,'123456840','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(53,53,'123456841','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(54,54,'123456842','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(55,55,'123456843','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(56,56,'123456844','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(57,57,'123456845','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(58,58,'123456846','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(59,59,'123456847','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(60,60,'123456848','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(61,61,'123456849','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(62,62,'123456850','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(63,63,'123456851','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(64,64,'123456852','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(65,65,'123456853','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(66,66,'123456854','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(67,67,'123456855','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(68,68,'123456856','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(69,69,'123456857','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(70,70,'123456858','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(71,71,'123456859','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(72,72,'123456860','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(73,73,'123456861','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(74,74,'123456862','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(75,75,'123456863','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(76,76,'123456864','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(77,77,'123456865','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(78,78,'123456866','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(79,79,'123456867','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(80,80,'123456868','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(81,81,'123456869','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(82,82,'123456870','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(83,83,'123456871','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(84,84,'123456872','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(85,85,'123456873','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(86,86,'123456874','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(87,87,'123456875','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(88,88,'123456876','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(89,89,'123456877','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(90,90,'123456878','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(91,91,'123456879','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(92,92,'123456880','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(93,93,'123456881','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(94,94,'123456882','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(95,95,'123456883','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(96,96,'123456884','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(97,97,'123456885','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(98,98,'123456886','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(99,99,'123456887','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(100,100,'123456888','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(101,101,'123456889','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(102,102,'123456890','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(103,103,'123456891','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(104,104,'123456892','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(105,105,'123456893','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(106,106,'123456894','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(107,107,'123456895','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(108,108,'123456896','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(109,109,'123456897','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(110,110,'123456898','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(111,111,'123456899','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(112,112,'123456900','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(113,113,'123456901','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(114,114,'123456902','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(115,115,'123456903','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(116,116,'123456904','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(117,117,'123456905','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(118,118,'123456906','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(119,119,'123456907','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(120,120,'123456908','author@example.com','','','','','','');
+INSERT INTO "entity" VALUES(121,121,'123456909','customer@example.com','','','','','','');
+INSERT INTO "entity" VALUES(122,122,'123456910','customer@example.com','','','','','','');
+INSERT INTO "entity" VALUES(123,123,'123456911','customer@example.com','','','','','','');
+INSERT INTO "entity" VALUES(124,124,'123456912','customer@example.com','','','','','','');
+INSERT INTO "entity" VALUES(125,125,'123456913','customer@example.com','','','','','','');
+INSERT INTO "entity" VALUES(126,126,'123456914','customer@example.com','','','','','','');
+INSERT INTO "entity" VALUES(127,127,'123456915','customer@example.com','','','Wellbourne','','','');
+INSERT INTO "entity" VALUES(128,128,'123456916','customer@example.com','','','Newfort','','','');
+INSERT INTO "entity" VALUES(129,129,'123456917','customer@example.com','','','Fairfall','','','');
+INSERT INTO "entity" VALUES(130,130,'123456918','customer@example.com','','','Easthedge','','','');
+INSERT INTO "entity" VALUES(131,131,'123456919','customer@example.com','','','Wyvernhaven','','','');
+INSERT INTO "entity" VALUES(132,132,'123456920','customer@example.com','','','Irondeer','','','');
+INSERT INTO "entity" VALUES(133,133,'123456921','customer@example.com','','','Shoreburn','','','');
+INSERT INTO "entity" VALUES(134,134,'123456922','customer@example.com','','','Winternesse','','','');
+INSERT INTO "entity" VALUES(135,135,'123456923','customer@example.com','','','Rosemist','','','');
+INSERT INTO "entity" VALUES(136,136,'123456924','customer@example.com','','','Ironshore','','','');
+INSERT INTO "entity" VALUES(137,137,'123456925','customer@example.com','','','Foxhaven','','','');
+INSERT INTO "entity" VALUES(138,138,'123456926','customer@example.com','','','Highhaven','','','');
+INSERT INTO "entity" VALUES(139,139,'123456927','customer@example.com','','','Ashcliff','','','');
+INSERT INTO "entity" VALUES(140,140,'123456928','customer@example.com','','','Starryville','','','');
+INSERT INTO "entity" VALUES(141,141,'123456929','publisher@example.com','','','Wooddale','','','');
+INSERT INTO "entity" VALUES(142,142,'123456930','publisher@example.com','','','Goldrose','','','');
+INSERT INTO "entity" VALUES(143,143,'123456931','publisher@example.com','','','Southsilver','','','');
+INSERT INTO "entity" VALUES(144,144,'123456932','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(145,145,'123456933','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(146,146,'123456934','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(147,147,'123456935','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(148,148,'123456936','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(149,149,'123456937','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(150,150,'123456938','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(151,151,'123456939','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(152,152,'123456940','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(153,153,'123456941','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(154,154,'123456942','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(155,155,'123456943','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(156,156,'123456944','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(157,157,'123456945','publisher@example.com','','','Wellbourne','','','');
+INSERT INTO "entity" VALUES(158,158,'123456946','publisher@example.com','','','Newfort','','','');
+INSERT INTO "entity" VALUES(159,159,'123456947','publisher@example.com','','','Fairfall','','','');
+INSERT INTO "entity" VALUES(160,160,'123456948','publisher@example.com','','','Easthedge','','','');
+INSERT INTO "entity" VALUES(161,161,'123456949','publisher@example.com','','','Wyvernhaven','','','');
+INSERT INTO "entity" VALUES(162,162,'123456950','publisher@example.com','','','Irondeer','','','');
+INSERT INTO "entity" VALUES(163,163,'123456951','publisher@example.com','','','Shoreburn','','','');
+INSERT INTO "entity" VALUES(164,164,'123456952','publisher@example.com','','','Winternesse','','','');
+INSERT INTO "entity" VALUES(165,165,'123456953','publisher@example.com','','','Rosemist','','','');
+INSERT INTO "entity" VALUES(166,166,'123456954','publisher@example.com','','','Ironshore','','','');
+INSERT INTO "entity" VALUES(167,167,'123456955','publisher@example.com','','','Foxhaven','','','');
+INSERT INTO "entity" VALUES(168,168,'123456956','publisher@example.com','','','Highhaven','','','');
+INSERT INTO "entity" VALUES(169,169,'123456957','publisher@example.com','','','Ashcliff','','','');
+INSERT INTO "entity" VALUES(170,170,'123456958','publisher@example.com','','','Starryville','','','');
+INSERT INTO "entity" VALUES(171,171,'123456959','publisher@example.com','','','Wooddale','','','');
+INSERT INTO "entity" VALUES(172,172,'123456960','publisher@example.com','','','Goldrose','','','');
+INSERT INTO "entity" VALUES(173,173,'123456961','publisher@example.com','','','Southsilver','','','');
+INSERT INTO "entity" VALUES(174,174,'123456962','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(175,175,'123456963','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(176,176,'123456964','publisher@example.com','','','','','','');
+INSERT INTO "entity" VALUES(177,177,'123456965','publisher@example.com','','','Crystalmill','','','');
+INSERT INTO "entity" VALUES(178,178,'123456966','publisher@example.com','','','Lorcliff','','','');
+INSERT INTO "entity" VALUES(179,179,'123456967','publisher@example.com','','','Raycliff','','','');
+INSERT INTO "entity" VALUES(180,180,'123456968','publisher@example.com','','','Freywall','','','');
+INSERT INTO "entity" VALUES(181,181,'123456969','publisher@example.com','','','Vertpond','','','');
+INSERT INTO "entity" VALUES(182,182,'123456970','publisher@example.com','','','Strongland','','','');
+INSERT INTO "entity" VALUES(183,183,'123456971','publisher@example.com','','','Lochport','','','');
+INSERT INTO "entity" VALUES(184,184,'123456972','publisher@example.com','','','Icefay','','','');
+INSERT INTO "entity" VALUES(185,185,'123456973','publisher@example.com','','','Southshore','','','');
+INSERT INTO "entity" VALUES(186,186,'123456974','publisher@example.com','','','Moormead','','','');
+INSERT INTO "entity" VALUES(187,187,'123456975','publisher@example.com','','','Highpond','','','');
+INSERT INTO "entity" VALUES(188,188,'123456976','publisher@example.com','','','Shadehollow','','','');
+INSERT INTO "entity" VALUES(189,189,'123456977','publisher@example.com','','','Whitesilver','','','');
+INSERT INTO "entity" VALUES(190,190,'123456978','publisher@example.com','','','Violetwick','','','');
+INSERT INTO "entity" VALUES(191,191,'123456979','publisher@example.com','','','Merriwynne','','','');
+INSERT INTO "entity" VALUES(192,192,'123456980','publisher@example.com','','','Draclyn','','','');
+INSERT INTO "entity" VALUES(193,193,'123456981','publisher@example.com','','','Byness','','','');
+INSERT INTO "entity" VALUES(194,194,'123456982','publisher@example.com','','','Brightglass','','','');
+INSERT INTO "entity" VALUES(195,195,'123456983','publisher@example.com','','','Lightsummer','','','');
+INSERT INTO "entity" VALUES(196,196,'123456984','publisher@example.com','','','Meadowmill','','','');
+INSERT INTO "entity" VALUES(197,197,'123456985','publisher@example.com','','','Brookacre','','','');
+INSERT INTO "entity" VALUES(198,198,'123456986','publisher@example.com','','','Lochnesse','','','');
+INSERT INTO "entity" VALUES(199,199,'123456987','publisher@example.com','','','Esterelf','','','');
+INSERT INTO "entity" VALUES(200,200,'123456988','publisher@example.com','','','Lorhill','','','');
+INSERT INTO "entity" VALUES(201,201,'123456989','publisher@example.com','','','Crystalmist','','','');
+INSERT INTO "entity" VALUES(202,202,'123456990','publisher@example.com','','','Hollowmarsh','','','');
+INSERT INTO "entity" VALUES(203,203,'123456991','publisher@example.com','','','Marshlyn','','','');
+INSERT INTO "entity" VALUES(204,204,'4169031234','warehouse@example.com','','USA','Columbus','OH','43201','123 Book Street W1');
+INSERT INTO "entity" VALUES(205,205,'4169031235','warehouse@example.com','','USA','Columbus','OH','43201','123 Book Street W2');
+INSERT INTO "entity" VALUES(206,206,'4169031236','warehouse@example.com','','USA','Columbus','OH','43201','124 Book Street W3');
+INSERT INTO "entity" VALUES(207,207,'4169031237','warehouse@example.com','','USA','Columbus','OH','43201','124 Book Street W4');
+INSERT INTO "entity" VALUES(208,208,'4169031238','warehouse@example.com','','USA','Columbus','OH','43201','125 Book Street W5');
+INSERT INTO "entity" VALUES(209,209,'4169031239','warehouse@example.com','','USA','Columbus','OH','43201','125 Book Street W6');
+INSERT INTO "entity" VALUES(210,210,'4169031240','warehouse@example.com','','USA','Columbus','OH','43201','126 Book Street W7');
+INSERT INTO "entity" VALUES(211,211,'4169031241','warehouse@example.com','','USA','Columbus','OH','43201','126 Book Street W8');
+INSERT INTO "entity" VALUES(212,212,'4169031242','warehouse@example.com','','USA','Columbus','OH','43201','127 Book Street W9');
+INSERT INTO "entity" VALUES(213,213,'4169031243','warehouse@example.com','','USA','Columbus','OH','43201','127 Book Street W10');
+INSERT INTO "entity" VALUES(214,214,'4169031244','warehouse@example.com','','USA','Columbus','OH','43201','128 Book Street W11');
+INSERT INTO "entity" VALUES(215,215,'4169031245','warehouse@example.com','','USA','Columbus','OH','43201','128 Book Street W12');
+INSERT INTO "entity" VALUES(216,216,'4169031246','warehouse@example.com','','USA','Columbus','OH','43201','129 Book Street W13');
+INSERT INTO "entity" VALUES(217,217,'4169031247','warehouse@example.com','','USA','Columbus','OH','43201','129 Book Street W14');
+INSERT INTO "entity" VALUES(218,218,'4169031248','warehouse@example.com','','USA','Columbus','OH','43201','130 Book Street W15');
+INSERT INTO "entity" VALUES(219,219,'4169031249','warehouse@example.com','','USA','Columbus','OH','43201','130 Book Street W16');
+INSERT INTO "entity" VALUES(220,220,'4169031250','warehouse@example.com','','USA','Columbus','OH','43201','131 Book Street W17');
+INSERT INTO "entity" VALUES(221,221,'4169031251','warehouse@example.com','','USA','Columbus','OH','43201','131 Book Street W18');
+INSERT INTO "entity" VALUES(222,222,'4169031253','warehouse@example.com','','USA','Columbus','OH','43201','132 Book Street W19');
+INSERT INTO "entity" VALUES(223,223,'4169031254','warehouse@example.com','','USA','Columbus','OH','43201','133 Book Street W20');
+INSERT INTO "entity" VALUES(224,224,'4164561254','employee@example.com','','USA','Columbus','OH','43201','100 BookEmployee Street');
+INSERT INTO "entity" VALUES(225,225,'4164561255','employee@example.com','','USA','Columbus','OH','43201','101 BookEmployee Street');
+INSERT INTO "entity" VALUES(226,226,'4164561256','employee@example.com','','USA','Columbus','OH','43201','102 BookEmployee Street');
+INSERT INTO "entity" VALUES(227,227,'4164561257','employee@example.com','','USA','Columbus','OH','43201','103 BookEmployee Street');
+INSERT INTO "entity" VALUES(228,228,'4164561258','employee@example.com','','USA','Columbus','OH','43201','104 BookEmployee Street');
+INSERT INTO "entity" VALUES(229,229,'4164561259','employee@example.com','','USA','Columbus','OH','43201','105 BookEmployee Street');
+INSERT INTO "entity" VALUES(230,230,'4164561260','employee@example.com','','USA','Columbus','OH','43201','106 BookEmployee Street');
+INSERT INTO "entity" VALUES(231,231,'4164561261','employee@example.com','','USA','Columbus','OH','43201','107 BookEmployee Street');
+INSERT INTO "entity" VALUES(232,232,'4164561262','employee@example.com','','USA','Columbus','OH','43201','108 BookEmployee Street');
+INSERT INTO "entity" VALUES(233,233,'4164561263','employee@example.com','','USA','Columbus','OH','43201','109 BookEmployee Street');
+INSERT INTO "entity" VALUES(234,234,'4164561264','employee@example.com','','USA','Columbus','OH','43201','110 BookEmployee Street');
+INSERT INTO "entity" VALUES(235,235,'4164561265','employee@example.com','','USA','Columbus','OH','43201','111 BookEmployee Street');
+INSERT INTO "entity" VALUES(236,236,'4164561266','employee@example.com','','USA','Columbus','OH','43201','112 BookEmployee Street');
+INSERT INTO "entity" VALUES(237,237,'4164561267','employee@example.com','','USA','Columbus','OH','43201','113 BookEmployee Street');
+INSERT INTO "entity" VALUES(238,238,'4164561268','employee@example.com','','USA','Columbus','OH','43201','114 BookEmployee Street');
+INSERT INTO "entity" VALUES(239,239,'4164561269','employee@example.com','','USA','Columbus','OH','43201','115 BookEmployee Street');
+INSERT INTO "entity" VALUES(240,240,'4164561270','employee@example.com','','USA','Columbus','OH','43201','116 BookEmployee Street');
+INSERT INTO "entity" VALUES(241,241,'4164561271','employee@example.com','','USA','Columbus','OH','43201','117 BookEmployee Street');
+INSERT INTO "entity" VALUES(242,242,'4164561272','employee@example.com','','USA','Columbus','OH','43201','118 BookEmployee Street');
+INSERT INTO "entity" VALUES(243,243,'4164561273','employee@example.com','','USA','Columbus','OH','43201','119 BookEmployee Street');
+CREATE INDEX isbnindex on Book(isbn);
+CREATE INDEX prices on Book(price);
+CREATE INDEX titles on Book(title);
+CREATE VIEW CustomerTotalSpent AS
+SELECT N.id, N.fname, N.lname, Sum(M.amount)
+  FROM Names N, Customer C, MonetaryTransaction M
+ WHERE N.id = C.eid
+   AND M.epayer = C.eid
+   GROUP BY N.id;
+CREATE VIEW quantitysoldperbook
+AS
+  SELECT O.bid,
+         Sum(O.quantity) AS numberSold
+  FROM   ordercontents O
+  GROUP  BY O.bid;
+CREATE VIEW AuthorProfitQuantity AS
+SELECT A.fname, A.mname, A.lname, Sum(P.profit), Sum(T.numberSold)
+  from Names A,
+ (SELECT O.bid AS isbn, Sum(O.quantity) AS numberSold
+  FROM OrderContents O
+  GROUP BY O.bid) T,
+(SELECT T.isbn, T.Sum * B.price AS profit
+From
+(SELECT O.bid AS isbn, Sum(O.quantity) AS Sum
+FROM OrderContents O
+GROUP BY O.bid) T,
+Book B
+Where B.isbn = T.isbn
+) P,
+BookAuthor BA
+where t.isbn = p.isbn
+and ba.isbn = t.isbn
+and BA.nameid = A.id
+group by ba.nameid;
 COMMIT;
