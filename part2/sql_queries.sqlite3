@@ -324,3 +324,105 @@ WHERE  C.id = O.eto
        AND G.bid = B.isbn
        AND B.isbn = A.isbn
        AND A.nameid = N.id;
+
+
+-- Part F: Transactions
+
+-- Create a reorder
+BEGIN TRANSACTION;
+
+-- Create monetary transaction.
+INSERT INTO "monetarytransaction"
+VALUES      (31,
+             '8/1/2014 14:54:54',
+             100.00,
+             200,
+             1);
+
+-- Create customer order.
+INSERT INTO "customerorder"
+VALUES      (21,
+             1,
+             '10/20/2010 12:12:12',
+             200,
+             '10/24/2010 10:20:34',
+             31);
+
+-- Create order contents.
+INSERT INTO "ordercontents"
+VALUES      (21,
+             0000000001,
+             10);
+
+-- Update  Inventory.
+UPDATE "inventory"
+SET    quantity = quantity + 10
+WHERE  bid = 0000000001
+       AND wid = 200;
+
+COMMIT TRANSACTION;
+
+-- Add a book to an existing order
+BEGIN TRANSACTION;
+
+INSERT INTO ordercontents
+            (oid,
+             bid,
+             quantity)
+VALUES      (41,
+             1558606432,
+             1);
+
+UPDATE ordercontents
+SET    quantity = quantity + 1
+WHERE  bid = 1558606432
+       AND oid = 41;
+
+-- Find price of book in book table add price to monetary transactions.
+UPDATE monetarytransaction
+SET    amount = amount
+                + (SELECT price
+                   FROM   book
+                   WHERE  isbn = 1558606432)
+WHERE  id = 31;
+
+COMMIT TRANSACTION;
+
+-- Add a new book author
+BEGIN TRANSACTION;
+
+-- Add new book
+INSERT INTO book
+VALUES     (0001000001,
+            19.99,
+            'Linus Damocles II',
+            157,
+            '2014',
+            364);
+
+-- Add name of author to names table if not already there.
+INSERT INTO "names"
+            (fname,
+             lname)
+VALUES      ('John',
+             'Doe');
+
+-- Create entity for the author
+INSERT INTO entity
+            (nameid)
+SELECT id
+FROM   names
+WHERE  fname = 'John'
+       AND lname = 'Doe';
+
+-- Use book author to bind name to book.
+INSERT INTO bookauthor
+            (isbn,
+             nameid)
+SELECT 0001000001,
+       id
+FROM   names
+WHERE  fname = 'John'
+       AND lname = 'Doe';
+
+COMMIT TRANSACTION;
