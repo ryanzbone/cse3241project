@@ -1,0 +1,55 @@
+-- Part C INSERT syntax
+
+-- Books can be inserted directly
+INSERT INTO Book
+            (isbn,
+             price,
+             title,
+             pid,
+             year,
+             length)
+VALUES      (0316066525,
+             19.99,
+             'Infinite Jest',
+             142,
+             1996,
+             1079);
+
+-- Publisher requires name, entity, publisher records
+INSERT INTO Names
+(fname,
+             mname,
+             lname)
+VALUES      ('OSU UniPrint',
+             '',
+             '');
+
+INSERT INTO entity
+            (email,
+             phone,
+             country,
+             city,
+             state,
+             postalcode,
+             address,
+             nameid)
+SELECT 'uniprint@osu.edu',
+       '6142922219',
+       'United States',
+       'Columbus',
+       'OH',
+       '43201',
+       '1739 N. High Street',
+       id
+FROM   names
+WHERE  fname = 'OSU UniPrint';
+
+INSERT INTO publisher
+            (eid,
+             slogan)
+SELECT e.id           AS eid,
+       'Go Buckeyes!' AS slogan
+FROM   entity e,
+       names n
+WHERE  e.nameid = n.id
+  AND  n.fname = 'OSU UniPrint';
