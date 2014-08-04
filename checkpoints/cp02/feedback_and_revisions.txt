@@ -9,4 +9,5 @@ f. same problem as above
 2)same problem as question 3e,f
 
 Revisions:
-
+1. See .schema using backupfile in cp03 or final ER diagram and schema in 'checkpoints/cp04'.
+2. see 'CP02_revision.pdf'
