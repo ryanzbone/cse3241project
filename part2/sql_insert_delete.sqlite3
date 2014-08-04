@@ -171,3 +171,24 @@ WHERE  entity.nameid IN (SELECT n.fname
 DELETE FROM names
 WHERE  ( fname = 'OSU UniPrint' );
 
+-- Customer
+-- Given a customer id, first delete from customer table:
+
+DELETE FROM customer
+WHERE  eid = 140;
+
+-- Then find nameid from entity table:
+
+SELECT nameid
+FROM   entity
+WHERE  id = 140;
+
+-- Next delete from entity table:
+
+DELETE FROM entity
+WHERE  id = 140;
+
+-- Finally delete from names table with previously found name id:
+
+DELETE FROM names
+WHERE  id = 140;
