@@ -6,3 +6,4 @@ Generally it looks good! actually more than good!
 
 
 Revisions:
+See ER diagram in 'checkpoints/cp02/' for incremental revision or ER diagram in 'checkpoints/cp04/' for final version.
