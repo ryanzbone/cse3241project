@@ -192,3 +192,31 @@ WHERE  id = 140;
 
 DELETE FROM names
 WHERE  id = 140;
+
+-- Warehouse
+-- Given a warehouse id, first delete from inventory:
+
+DELETE FROM inventory
+WHERE  wid = 204;
+
+-- Next delete any employees working at that warehouse:
+
+DELETE FROM employee
+WHERE  wid = 204;
+
+-- Next find the name id from the warehouse/entity id:
+
+SELECT nameid
+FROM   entity
+WHERE  id = 204;
+
+-- Finally delete the warehouse, entity and name entry:
+
+DELETE FROM warehouse
+WHERE  id = 204;
+
+DELETE FROM entity
+WHERE  id = 204;
+
+DELETE FROM names
+WHERE  id = 204;
