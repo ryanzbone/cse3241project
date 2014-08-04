@@ -1,0 +1,8 @@
+first look: WOW, that's a lot of stuff!! you guys really work hard at this!! good for you!!
+but, some entities may not be necessary and some entities could be combined(one entity could become an attribute if not that important). for instance, EMPLOYEE and TIMESHEET, may not relate too close to the sales operation in this bookstore. So in the first checkpoint, try to focus on the big picture. but keeping them there is totally fine, it only means more work later in the project. you may want to keep either BOOK or PRODUCT, since we are only considering book as the only product to sell. and many relations can be developed upon BOOK. the PUBLISHER could be the SUPPLIER,so maybe just keep one? SHIPPER, SHIPMENT may not be needed a lot later in the project, so I suggest you taking them out, just use the WAREHOUSE to keep track of inventories, and since I suggest taking out PRODUCT, INVENTORY is not necessary to be there as well.
+But again, this is just my personal experience. you will write some complicated queries later in the project, so I strongly suggest you to try keep it simple and efficient!
+
+Generally it looks good! actually more than good!
+
+
+Revisions:
