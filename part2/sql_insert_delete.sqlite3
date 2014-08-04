@@ -109,114 +109,122 @@ WHERE  E.nameid = N.id
     AND mname = ''
     AND lname = 'Smith';
 
-
 -- Part D
--- Book: Deleting a book requires first pruning its authors, categories, descriptions, and ratings:
-DELETE FROM BookAuthor
-WHERE   isbn = '112233445566';
 
-DELETE FROM BookCategory
-WHERE   isbn = '112233445566';
-
-DELETE FROM BookDescription
-WHERE   isbn = '112233445566';
-
-DELETE FROM Rating
-WHERE   bid = '112233445566';
-
--- Next, it is removed from inventory:
-DELETE FROM Inventory
-WHERE   bid = '112233445566';
-
--- And last, the original record from Book is destroyed:
-DELETE FROM Book
-WHERE   isbn = '112233445566';
-
--- Deleting an author first requires removing the links to books they’ve written:
-DELETE FROM bookauthor
-WHERE  bookauthor.nameid IN (SELECT n.id
-                             FROM   names n
-                             WHERE  n.fname = 'David'
-                                AND n.lname = 'Wallace');
-
--- Deleting a publisher requires removing the books they’ve published:
+-- Book
+-- Given a book isbn:
 
 DELETE FROM book
-WHERE  book.pid IN (SELECT p.eid
-                    FROM   publisher p
-                    WHERE p.eid IN (SELECT e.nameid
-                                             FROM   entity e
-                                             WHERE  e.nameid IN (SELECT n.fname
-                                                                 FROM   names n
-                                                                 WHERE  fname =
-                                                                'OSU UniPrint')));
+WHERE  isbn = 321125169;
 
--- The publisher is then removed from the publisher table:
+-- Author
+-- Deleting an author from the names table will cascade down to delete it’s related entity, bookauthor and book entries:
 
-DELETE FROM publisher
-WHERE  publisher.eid IN (SELECT e.nameid
-                         FROM   entity e
-                         WHERE  e.nameid IN (SELECT n.fname
-                                             FROM   names n
-                                             WHERE  fname = 'OSU UniPrint'));
+DELETE FROM names
+WHERE  ( fname = 'David'
+         AND mname = 'Foster'
+         AND lname = 'Wallace' );
 
--- The publisher is then removed from the entity table:
+-- Publisher
+-- Deleting a publisher name entry will cascade down to delete the publisher’s entity entry and any books they’ve published:
 
-DELETE FROM entity
-WHERE  entity.nameid IN (SELECT n.fname
-                    FROM   names n
-                    WHERE  fname = 'OSU UniPrint');
-
--- And lastly, from the name table:
 DELETE FROM names
 WHERE  ( fname = 'OSU UniPrint' );
 
 -- Customer
--- Given a customer id, first delete from customer table:
-
-DELETE FROM customer
-WHERE  eid = 140;
-
--- Then find nameid from entity table:
-
-SELECT nameid
-FROM   entity
-WHERE  id = 140;
-
--- Next delete from entity table:
-
-DELETE FROM entity
-WHERE  id = 140;
-
--- Finally delete from names table with previously found name id:
-
+-- Deleting the customer name will remove its associated entity and any orders, monetary transactions and associated order contents:
 DELETE FROM names
 WHERE  id = 140;
 
 -- Warehouse
--- Given a warehouse id, first delete from inventory:
-
-DELETE FROM inventory
-WHERE  wid = 204;
-
--- Next delete any employees working at that warehouse:
-
-DELETE FROM employee
-WHERE  wid = 204;
-
--- Next find the name id from the warehouse/entity id:
-
-SELECT nameid
-FROM   entity
-WHERE  id = 204;
-
--- Finally delete the warehouse, entity and name entry:
-
-DELETE FROM warehouse
-WHERE  id = 204;
-
-DELETE FROM entity
-WHERE  id = 204;
+-- Deleting the warehouse name will remove it’s associated entity, employees and inventory:
 
 DELETE FROM names
 WHERE  id = 204;
+
+-- Employee
+-- Deleting the employee name from the names table will delete the entry’s associated entity and any other employees that reference the deleted one:
+
+DELETE FROM names
+WHERE  fname = 'Employee 1'
+       AND mname = ''
+       AND lname = '';
+
+-- Order
+-- Deleting an order will delete any associated ordercontents:
+
+DELETE FROM customerorder
+WHERE  id = 1;
+
+-- Rating
+-- The rating information is removed from the rating table:
+
+DELETE FROM rating
+WHERE  rating.cid = 140
+       AND rating.bid = '112233445566'
+
+-- Credit Card
+-- The credit card information is removed from the credit card table:
+
+DELETE FROM creditcard
+WHERE  cc_num = '3530111333300000';
+
+-- MonetaryTransaction
+-- Deleting from monetarytransaction will delete the associated customer order and that order’s contents
+
+DELETE FROM MonetaryTransaction
+WHERE       id = 2940947;
+
+-- But can also be done if, for example, the date, time, and customer are known:
+
+DELETE FROM MonetaryTransaction
+WHERE  MonetaryTransaction.timestamp > '2014-08-02 21:00:00'
+AND MonetaryTransaction.timestamp < '2014-08-02 22:00:00'
+    AND MonetaryTransaction.epayee IN
+(SELECT MonetaryTransaction.epayee
+ FROM   Names AS N, Entity AS E, MonetaryTransaction
+ WHERE  n.fname = 'Bob'
+ AND n.lname = 'Smith'
+ AND E.nameid = N.id
+ AND MonetaryTransaction.epayee = E.id);
+
+-- Book Category
+-- Entire categories may be deleted:
+
+DELETE FROM bookcategory
+WHERE  category = 'Science'
+
+-- Or the category for a single book:
+
+DELETE FROM bookcategory
+WHERE  category = 'Science'
+       AND isbn = '067463442X';
+
+-- Book Description
+
+DELETE FROM bookdescription
+WHERE  bookdescription.isbn = '1561584029';
+
+-- Order Contents
+
+DELETE FROM ordercontents
+WHERE  ordercontents.oid = 1;
+
+-- Inventory
+-- Given an isbn and a warehouse id:
+DELETE FROM inventory
+WHERE  bid = 1558605525
+       AND wid = 216;
+
+-- Entity
+-- Given an entity id (this will delete anything that references this entity, be careful):
+DELETE FROM entity
+
+WHERE  id = 244;
+
+-- Names
+-- Names are deleted from the Names table directly (this will delete the entity referencing the name and anything referencing that entity, be careful):
+
+DELETE FROM names
+WHERE  fname = 'Bob'
+AND lname = 'Smith';
