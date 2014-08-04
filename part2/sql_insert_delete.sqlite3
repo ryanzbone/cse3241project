@@ -138,3 +138,36 @@ WHERE  bookauthor.nameid IN (SELECT n.id
                              FROM   names n
                              WHERE  n.fname = 'David'
                                 AND n.lname = 'Wallace');
+
+-- Deleting a publisher requires removing the books they’ve published:
+
+DELETE FROM book
+WHERE  book.pid IN (SELECT p.eid
+                    FROM   publisher p
+                    WHERE p.eid IN (SELECT e.nameid
+                                             FROM   entity e
+                                             WHERE  e.nameid IN (SELECT n.fname
+                                                                 FROM   names n
+                                                                 WHERE  fname =
+                                                                'OSU UniPrint')));
+
+-- The publisher is then removed from the publisher table:
+
+DELETE FROM publisher
+WHERE  publisher.eid IN (SELECT e.nameid
+                         FROM   entity e
+                         WHERE  e.nameid IN (SELECT n.fname
+                                             FROM   names n
+                                             WHERE  fname = 'OSU UniPrint'));
+
+-- The publisher is then removed from the entity table:
+
+DELETE FROM entity
+WHERE  entity.nameid IN (SELECT n.fname
+                    FROM   names n
+                    WHERE  fname = 'OSU UniPrint');
+
+-- And lastly, from the name table:
+DELETE FROM names
+WHERE  ( fname = 'OSU UniPrint' );
+
