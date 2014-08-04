@@ -1,0 +1,19 @@
+SELECT sum(quantity)
+FROM Book B, BookAuthor A, Inventory I WHERE b.isbn = a.isbn AND I.bid = B.isbn
+AND A.name = ‘some author’;
+
+SELECT avg(rating)
+FROM Book AS B JOIN RATING AS R
+  ON B.isbn = R.bid
+WHERE B.isbn = ‘XXXXXXXXXX’;
+
+SELECT max(salary)
+FROM Employee AS E 
+JOIN (
+	SELECT emanager AS manager
+	FROM Employee, Entity
+	WHERE id = emanager
+	AND emanager IS NOT NULL
+) AS M 
+ON E.eid = M.manager
+WHERE E.salary IS NOT NULL;

@@ -1,0 +1,109 @@
+SELECT E.name, sum(amount)
+FROM Customer AS C, Entity AS E, MonetaryTransaction AS T
+WHERE E.id = C.eid
+AND T.epayer = C.eid
+GROUP BY C.eid;
+
+
+SELECT D.name, D.email
+FROM (
+SELECT E.name, E.email, sum(T.amount) AS sum
+FROM Customer AS C, Entity AS E, Transaction AS T
+WHERE C.eid = E.id
+AND E.id = T.epayer
+GROUP BY E.id
+) AS D
+HAVING D.sum > avg(D.sum);
+
+
+SELECT B.title, sum(quantity)
+FROM Book AS B, Order AS O, Group AS G
+WHERE G.oid = O.id
+AND G.bid = B.isbn
+GROUP BY B.isbn
+ORDER BY sum(quantity) DESC;
+
+
+SELECT B.title, B.price * sum(O.quantity) AS total
+FROM Customer AS C, Transaction AS T, Book AS B, Order AS O, Group AS G
+WHERE T.epayer = C.eid
+AND T.oid = O.id
+AND G.oid = O.id
+AND B.isbn = G.bid
+GROUP BY B.isbn
+ORDER BY total DESC;
+
+
+
+SELECT D.author 
+FROM (
+	SELECT B.author, sum(quantity) AS sales
+	FROM Customer AS C, Order AS O, Group AS G, Book AS B
+	WHERE O.eto = C.eid
+	AND G.oid = O.id
+	AND B.isbn = G.bid
+	GROUP BY B.author
+) AS D
+HAVING D.sales = max(D.sales);
+
+
+
+
+SELECT D.author 
+FROM (
+	SELECT F.author, F.price * sum(total) AS money
+	FROM (
+		SELECT B.author, B.price, sum(quantity) AS total
+FROM Customer AS C, Order AS O, Group AS G, Book AS B
+		WHERE O.eto = C.eid
+		AND G.oid = O.id
+		AND B.isbn = G.bid
+		GROUP BY B.isbn
+	) AS F
+	GROUP BY F.author
+) AS D
+HAVING D.money = max(D.money);
+
+
+
+
+SELECT DISTINCT E.*
+FROM Customer AS C, Entity AS E, Order AS O, Group AS G, Book AS B
+WHERE C.eid = O.eto
+AND C.eid = E.id
+AND G.oid = O.id
+AND G.bid = B.isbn
+AND B.author IN (
+	SELECT D.author 
+FROM (
+			SELECT F.author, F.price * sum(total) AS money
+			FROM (
+				SELECT B.author, B.price, sum(quantity) AS total
+FROM Customer AS C, Order AS O, Group AS G, Book AS B
+				WHERE O.eto = C.eid
+				AND G.oid = O.id
+				AND B.isbn = G.bid
+				GROUP BY B.isbn
+			) AS F
+		GROUP BY F.author
+) AS D
+HAVING D.money = max(D.money)
+);
+
+
+
+SELECT DISTINCT B.author
+FROM (
+SELECT D.eid
+FROM (
+SELECT E.id, sum(T.amount) AS sum
+FROM Customer AS C, Entity AS E, Transaction AS T
+WHERE C.eid = E.id
+AND E.id = T.epayer
+GROUP BY E.id
+) AS D
+HAVING D.sum > avg(D.sum)
+			) AS C, Order AS O, Group AS G, Book AS B
+			WHERE C.eid = O.eto
+			AND G.oid = O.id
+			AND G.bid = B.isbn;

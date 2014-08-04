@@ -1,0 +1,23 @@
+﻿SELECT SUM(I.quantity)
+FROM Book B, BookAuthor A, Inventory I 
+WHERE B.isbn = A.isbn
+AND I.bid = B.isbn
+AND A.name LIKE ‘%Pratchett’;
+
+
+SELECT AVG(rating)
+FROM Book B JOIN RATING R
+ON B.isbn = R.bid
+WHERE B.isbn = 20;
+
+
+SELECT MAX(salary)
+  FROM Employee E 
+  JOIN (
+      SELECT emanager AS manager
+      FROM Employee, Entity
+      WHERE id = emanager
+      AND emanager IS NOT NULL
+      ) AS M 
+  ON E.eid = M.manager
+  WHERE E.salary IS NOT NULL

@@ -1,0 +1,6 @@
+0) price in Book are all integers, it should be doubles
+1) most SQL could run and return the correct values, so that's awesome!!  some that don't pass,most cases error's message indicates you misspelled something..
+
+Revisions:
+See schema in Section 1 Part 1b; book price is now a double.
+See revised queries in 'Revised Queries' directory

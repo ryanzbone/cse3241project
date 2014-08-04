@@ -1,0 +1,96 @@
+﻿SELECT E.name, sum(amount)
+FROM Customer AS C, Entity AS E, MonetaryTransaction AS T
+WHERE E.id = C.eid
+AND T.epayer = C.eid
+GROUP BY C.eid;
+
+
+SELECT D.name, D.email
+FROM (
+      SELECT E.name, E.email, sum(T.amount) AS sum
+      FROM Customer AS C, Entity AS E, MonetaryTransaction AS T
+      WHERE C.eid = E.id
+      AND E.id = T.epayer
+      GROUP BY E.id
+      ) AS D
+Group By D.Name
+HAVING D.sum > avg(D.sum); 
+
+
+SELECT B.title, sum(quantity)
+FROM Book AS B, CustomerOrder AS O, OrderContents AS G
+WHERE G.oid = O.id
+AND G.bid = B.isbn
+GROUP BY B.isbn 
+ORDER BY sum(quantity) DESC;
+
+
+SELECT B.title, B.price * sum(G.quantity) AS total
+FROM Customer AS C, MonetaryTransaction AS T, Book AS B, CustomerOrder AS O, OrderContents AS G
+WHERE T.epayer = C.eid
+AND T.oid = O.id
+AND G.oid = O.id
+AND B.isbn = G.bid
+GROUP BY B.isbn
+ORDER BY total DESC;
+
+
+SELECT D.name 
+FROM (
+    SELECT A.name, sum(quantity) AS sales
+    FROM Customer C, CustomerOrder O, OrderContents G, Book B, BookAuthor A
+    WHERE O.eto = C.eid
+    AND G.oid = O.id
+    AND B.isbn = G.bid
+    AND B.isbn = A.isbn
+    GROUP BY A.name
+    ) AS D
+GROUP BY D.name
+HAVING D.sales = max(D.sales)
+LIMIT 1;
+
+
+SELECT D.name
+FROM (
+    SELECT F.name, F.price * sum(total) AS money
+    FROM (
+      SELECT A.name, B.price, sum(quantity) AS total
+      FROM Customer C, CustomerOrder O, OrderContents G, Book B, BookAuthor A
+      WHERE O.eto = C.eid
+      AND G.oid = O.id
+      AND B.isbn = G.bid
+      AND A.isbn = B.isbn
+      GROUP BY B.isbn
+      ) AS F
+    GROUP BY F.name
+    ) AS D
+GROUP BY D.name
+HAVING D.money = max(D.money);
+
+
+SELECT DISTINCT E.*
+FROM Customer AS C, Entity AS E, CustomerOrder AS O, OrderContents AS G, Book AS B, BookAuthor A
+WHERE C.eid = O.eto
+AND C.eid = E.id
+AND G.oid = O.id
+AND G.bid = B.isbn
+AND B.isbn = A.isbn
+AND A.name IN (
+  SELECT D.name 
+  FROM (
+    SELECT F.name, F.price * sum(total) AS money
+    FROM (
+      SELECT A.name, B.price, sum(quantity) AS total
+      FROM Customer AS C, CustomerOrder AS O, OrderContents AS G, 
+      Book AS B, BookAuthor A
+      WHERE O.eto = C.eid
+      AND G.oid = O.id
+      AND B.isbn = G.bid
+      AND B.isbn = A.isbn
+      GROUP BY B.isbn
+      ) AS F
+    GROUP BY F.name
+    ) AS D
+  Group By D.name
+  HAVING D.money = max(D.money)
+  );

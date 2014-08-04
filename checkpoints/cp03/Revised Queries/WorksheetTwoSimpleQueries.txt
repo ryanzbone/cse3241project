@@ -1,0 +1,60 @@
+﻿SELECT DISTINCT B.title, A.name 
+FROM Book B, BookAuthor A 
+WHERE b.price < 1000 
+AND A.name LIKE '%Pratchett' 
+AND B.isbn = A.isbn;
+
+
+SELECT B.title, T.timestamp 
+FROM Book B, MonetaryTransaction T, CustomerOrder O, OrderContents G 
+WHERE T.oid = O.id 
+AND G.oid = O.id 
+AND B.isbn = G.bid 
+AND T.epayer = 101;
+
+
+SELECT B.title, B.isbn 
+FROM Book B, Inventory I 
+WHERE I.bid = B.isbn 
+AND i.quantity < 5;
+
+
+SELECT E.name, B.title 
+FROM Entity E, Customer C, MonetaryTransaction T, CustomerOrder O, OrderContents G, Book B, BookAuthor A
+WHERE C.eid = T.epayer
+AND T.oid = O.id
+AND C.eid = E.id
+AND G.oid = O.id
+AND B.isbn = G.bid
+AND A.isbn = B.isbn
+AND A.name LIKE ‘%Pratchett’;
+
+
+SELECT SUM(quantity)
+FROM Customer AS C, MonetaryTransaction AS T, CustomerOrder As O, OrderContents AS G
+WHERE C.eid = T.epayer
+AND T.oid = O.id
+AND G.oid = O.id
+AND C.eid = 101;
+
+
+
+
+SELECT EidSum.eid, EidSum.total
+FROM 
+  (SELECT C.eid, sum(quantity) AS total
+    FROM Customer C, MonetaryTransaction T, CustomerOrder O, OrderContents G
+    WHERE C.eid = T.epayer
+    AND T.oid = O.id
+    AND G.oid = O.id
+    GROUP BY C.eid
+    ) EidSum
+WHERE EidSum.total = (SELECT max(e.total)
+    FROM
+    (SELECT sum(quantity) AS total
+     FROM Customer C, MonetaryTransaction T, CustomerOrder O, OrderContents G
+     WHERE C.eid = T.epayer
+     AND T.oid = O.id
+     AND G.oid = O.id
+     GROUP BY C.eid
+     ) e);

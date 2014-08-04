@@ -1,0 +1,32 @@
+SELECT DISTINCT B.title, A.name FROM Book B, BookAuthor A WHERE b.price < 1000 AND A.name LIKE '%Pratchett' AND B.isbn = A.isbn;
+
+SELECT B.title, T.timestamp FROM Book B, MonetaryTransaction T, CustomerOrder O, OrderContents G where T.oid = O.id AND G.oid = O.id AND B.isbn = G.bid AND T.epayer = 101;
+
+select B.title, B.isbn from Book B, Inventory I where I.bid = B.isbn and i.quantity < 5;
+
+SELECT E.name, B.title 
+FROM Entity E, Customer C, MonetaryTransaction T, CustomerOrder O, OrderContents G, Book B, BookAuthor A
+WHERE C.eid = T.epayer
+AND T.oid = O.id
+AND C.eid = E.id
+AND G.oid = O.id
+AND B.isbn = G.bid
+AND A.isbn = B.isbn
+AND A.name LIKE ‘%Pratchett’;
+
+SELECT sum(quantity)
+FROM Customer AS C, MonetaryTransaction AS T, CustomerOrder As O, OrderContents AS G
+WHERE C.eid = T.epayer
+AND T.oid = O.id
+AND G.oid = O.id
+AND C.eid = 101;
+
+SELECT C.eid
+FROM ( SELECT C.eid, sum(quantity) AS sum
+FROM Customer AS C, MonetaryTransaction AS T, CustomerOrder As O, OrderContents AS G
+WHERE C.eid = T.epayer
+AND T.oid = O.id
+AND G.oid = O.id
+GROUP BY C.eid
+)
+HAVING sum = max(sum);
