@@ -1,28 +1,16 @@
-CREATE TABLE book
-  (
-     isbn   CHAR(10) NOT NULL,
-     price  DOUBLE NOT NULL,
-     title  VARCHAR(254) NOT NULL,
-     pid    INT,
-     year   CHAR(4),
-     length INT,
-     FOREIGN KEY(pid) REFERENCES publisher(eid),
-     PRIMARY KEY(isbn)
-  );
-
 CREATE TABLE bookauthor
   (
      isbn   INT NOT NULL,
      nameid INT NOT NULL,
-     FOREIGN KEY(isbn) REFERENCES book(isbn),
-     FOREIGN KEY(nameid) REFERENCES names(id)
+     FOREIGN KEY(isbn) REFERENCES book(isbn) ON DELETE CASCADE,
+     FOREIGN KEY(nameid) REFERENCES names(id) ON DELETE CASCADE
   );
 
 CREATE TABLE bookcategory
   (
      isbn     CHAR(10) NOT NULL,
      category VARCHAR(254),
-     FOREIGN KEY(isbn) REFERENCES book(isbn),
+     FOREIGN KEY(isbn) REFERENCES book(isbn) ON DELETE CASCADE,
      PRIMARY KEY(isbn)
   );
 
@@ -30,7 +18,7 @@ CREATE TABLE bookdescription
   (
      isbn        CHAR(10) NOT NULL,
      description VARCHAR(4095),
-     FOREIGN KEY(isbn) REFERENCES book(isbn),
+     FOREIGN KEY(isbn) REFERENCES book(isbn) ON DELETE CASCADE,
      PRIMARY KEY(isbn)
   );
 
@@ -38,7 +26,7 @@ CREATE TABLE customer
   (
      eid INT NOT NULL,
      PRIMARY KEY(eid),
-     FOREIGN KEY(eid) REFERENCES entity(id)
+     FOREIGN KEY(eid) REFERENCES entity(id) ON DELETE CASCADE
   );
 
 CREATE TABLE employee
@@ -50,9 +38,9 @@ CREATE TABLE employee
      title      VARCHAR(254),
      start_date DATE,
      wid        INT,
-     FOREIGN KEY(emanager) REFERENCES employee(eid),
-     FOREIGN KEY(wid) REFERENCES warehouse(eid),
-     FOREIGN KEY(eid) REFERENCES entity(id),
+     FOREIGN KEY(emanager) REFERENCES employee(eid) ON DELETE CASCADE,
+     FOREIGN KEY(wid) REFERENCES warehouse(eid) ON DELETE CASCADE,
+     FOREIGN KEY(eid) REFERENCES entity(id) ON DELETE CASCADE,
      PRIMARY KEY(eid)
   );
 
@@ -61,8 +49,8 @@ CREATE TABLE inventory
      bid      INT NOT NULL,
      wid      INT NOT NULL,
      quantity INT NOT NULL DEFAULT(0),
-     FOREIGN KEY(bid) REFERENCES book(isbn),
-     FOREIGN KEY(wid) REFERENCES warehouse(eid)
+     FOREIGN KEY(bid) REFERENCES book(isbn) ON DELETE CASCADE,
+     FOREIGN KEY(wid) REFERENCES warehouse(eid) ON DELETE CASCADE
   );
 
 CREATE TABLE ordercontents
@@ -70,8 +58,8 @@ CREATE TABLE ordercontents
      oid      INT NOT NULL,
      bid      INT NOT NULL,
      quantity INT NOT NULL DEFAULT(1),
-     FOREIGN KEY(bid) REFERENCES book(isbn),
-     FOREIGN KEY(oid) REFERENCES customerorder(id),
+     FOREIGN KEY(bid) REFERENCES book(isbn) ON DELETE CASCADE,
+     FOREIGN KEY(oid) REFERENCES customerorder(id) ON DELETE CASCADE,
      PRIMARY KEY (oid, bid)
   );
 
@@ -79,7 +67,7 @@ CREATE TABLE publisher
   (
      eid    INT NOT NULL,
      slogan VARCHAR(254),
-     FOREIGN KEY(eid) REFERENCES entity(id),
+     FOREIGN KEY(eid) REFERENCES entity(id) ON DELETE CASCADE,
      PRIMARY KEY(eid)
   );
 
@@ -88,8 +76,8 @@ CREATE TABLE rating
      cid    INT NOT NULL,
      bid    INT NOT NULL,
      rating INT,
-     FOREIGN KEY(bid) REFERENCES book(isbn),
-     FOREIGN KEY(cid) REFERENCES customer(eid)
+     FOREIGN KEY(bid) REFERENCES book(isbn) ON DELETE CASCADE,
+     FOREIGN KEY(cid) REFERENCES customer(eid) ON DELETE CASCADE
      PRIMARY KEY(cid, bid)
   );
 
@@ -97,7 +85,19 @@ CREATE TABLE warehouse
   (
      eid INT NOT NULL,
      PRIMARY KEY(eid),
-     FOREIGN KEY(eid) REFERENCES entity(id)
+     FOREIGN KEY(eid) REFERENCES entity(id) ON DELETE CASCADE
+  );
+
+CREATE TABLE book
+  (
+     isbn   CHAR(10) NOT NULL,
+     price  DOUBLE NOT NULL,
+     title  VARCHAR(254) NOT NULL,
+     pid    INT,
+     year   CHAR(4),
+     length INT,
+     FOREIGN KEY(pid) REFERENCES publisher(eid) ON DELETE CASCADE,
+     PRIMARY KEY(isbn)
   );
 
 CREATE TABLE creditcard
@@ -105,7 +105,7 @@ CREATE TABLE creditcard
      cc_num CHAR(16) NOT NULL,
      eid    INT NOT NULL,
      PRIMARY KEY(eid),
-     FOREIGN KEY(eid) REFERENCES entity(id)
+     FOREIGN KEY(eid) REFERENCES entity(id) ON DELETE CASCADE
   );
 
 CREATE TABLE customerorder
@@ -116,9 +116,10 @@ CREATE TABLE customerorder
      eto           INT NOT NULL,
      arrival       TIMESTAMP,
      transactionid NOT NULL,
-     FOREIGN KEY(transactionid) REFERENCES monetarytransaction(id),
-     FOREIGN KEY(efrom) REFERENCES entity(id),
-     FOREIGN KEY(eto) REFERENCES entity(id),
+     FOREIGN KEY(transactionid) REFERENCES monetarytransaction(id) ON DELETE
+     CASCADE,
+     FOREIGN KEY(efrom) REFERENCES entity(id) ON DELETE CASCADE,
+     FOREIGN KEY(eto) REFERENCES entity(id) ON DELETE CASCADE,
      PRIMARY KEY(id)
   );
 
@@ -135,7 +136,7 @@ CREATE TABLE entity
      postalcode VARCHAR(50),
      address    VARCHAR(255),
      PRIMARY KEY(id)
-     FOREIGN KEY(nameid) REFERENCES names(id)
+     FOREIGN KEY(nameid) REFERENCES names(id) ON DELETE CASCADE
   );
 
 CREATE TABLE monetarytransaction
@@ -145,8 +146,8 @@ CREATE TABLE monetarytransaction
      amount    INT NOT NULL DEFAULT(0),
      epayer    INT NOT NULL,
      epayee    INT NOT NULL,
-     FOREIGN KEY(epayer) REFERENCES entity(id),
-     FOREIGN KEY(epayee) REFERENCES entity(id),
+     FOREIGN KEY(epayer) REFERENCES entity(id) ON DELETE CASCADE,
+     FOREIGN KEY(epayee) REFERENCES entity(id) ON DELETE CASCADE,
      PRIMARY KEY(id)
   );
 
@@ -204,12 +205,3 @@ AS
          AND ba.isbn = t.isbn
          AND BA.nameid = A.id
   GROUP  BY ba.nameid;
-
-CREATE INDEX isbnindex
-  ON book(isbn);
-
-CREATE INDEX prices
-  ON book(price);
-
-CREATE INDEX titles
-  ON book(title);

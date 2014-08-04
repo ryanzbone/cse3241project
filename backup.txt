@@ -4,8 +4,8 @@ CREATE TABLE BookAuthor (
 isbn INT NOT NULL,
 nameid INT NOT NULL,
 
-FOREIGN KEY(isbn) REFERENCES Book(isbn),
-FOREIGN KEY(nameid) REFERENCES Names(id)
+FOREIGN KEY(isbn) REFERENCES Book(isbn) on delete cascade,
+FOREIGN KEY(nameid) REFERENCES Names(id) on delete cascade
 
 );
 INSERT INTO "BookAuthor" VALUES(782140661,1);
@@ -174,7 +174,7 @@ CREATE TABLE Customer (
 eid INT NOT NULL,
 
 PRIMARY KEY(eid),
-FOREIGN KEY(eid) REFERENCES Entity(id)
+FOREIGN KEY(eid) REFERENCES Entity(id) on delete cascade
 );
 INSERT INTO "Customer" VALUES(121);
 INSERT INTO "Customer" VALUES(122);
@@ -205,9 +205,9 @@ title VARCHAR(254),
 start_date DATE,
 wid INT,
 
-FOREIGN KEY(emanager) REFERENCES Employee(eid),
-FOREIGN KEY(wid) REFERENCES Warehouse(eid),
-FOREIGN KEY(eid) REFERENCES Entity(id),
+FOREIGN KEY(emanager) REFERENCES Employee(eid) on delete cascade,
+FOREIGN KEY(wid) REFERENCES Warehouse(eid) on delete cascade,
+FOREIGN KEY(eid) REFERENCES Entity(id) on delete cascade,
 PRIMARY KEY(eid)
 );
 INSERT INTO "Employee" VALUES('eid','salary','wage','emanager','title','starte_date','wid');
@@ -236,8 +236,8 @@ bid INT NOT NULL,
 wid INT NOT NULL,
 quantity INT NOT NULL DEFAULT(0),
 
-FOREIGN KEY(bid) REFERENCES Book(isbn),
-FOREIGN KEY(wid) REFERENCES Warehouse(eid)
+FOREIGN KEY(bid) REFERENCES Book(isbn) on delete cascade,
+FOREIGN KEY(wid) REFERENCES Warehouse(eid) on delete cascade
 );
 INSERT INTO "Inventory" VALUES('isbn','wid','quantity');
 INSERT INTO "Inventory" VALUES(1,204,95);
@@ -373,8 +373,8 @@ oid INT NOT NULL,
 bid INT NOT NULL,
 quantity INT NOT NULL DEFAULT(1),
 
-FOREIGN KEY(bid) references Book(isbn),
-FOREIGN KEY(oid) references CustomerOrder(id),
+FOREIGN KEY(bid) references Book(isbn) on delete cascade,
+FOREIGN KEY(oid) references CustomerOrder(id) on delete cascade,
 PRIMARY KEY (oid, bid)
 );
 INSERT INTO "OrderContents" VALUES('oid','bid','quantity');
@@ -403,7 +403,7 @@ CREATE TABLE Publisher (
 eid INT NOT NULL,
 slogan VARCHAR(254),
 
-FOREIGN KEY(eid) REFERENCES Entity(id),
+FOREIGN KEY(eid) REFERENCES Entity(id) on delete cascade,
 PRIMARY KEY(eid)
 );
 INSERT INTO "Publisher" VALUES('eid','slogan');
@@ -474,8 +474,8 @@ cid INT NOT NULL,
 bid INT NOT NULL,
 rating INT,
 
-FOREIGN KEY(bid) REFERENCES Book(isbn),
-FOREIGN KEY(cid) REFERENCES Customer(eid)
+FOREIGN KEY(bid) REFERENCES Book(isbn) on delete cascade,
+FOREIGN KEY(cid) REFERENCES Customer(eid) on delete cascade
 PRIMARY KEY(cid, bid)
 );
 INSERT INTO "Rating" VALUES('Customer ID','ISBN','Rating');
@@ -504,7 +504,7 @@ CREATE TABLE Warehouse (
 eid INT NOT NULL,
 
 PRIMARY KEY(eid),
-FOREIGN KEY(eid) REFERENCES Entity(id)
+FOREIGN KEY(eid) REFERENCES Entity(id) on delete cascade
 );
 INSERT INTO "Warehouse" VALUES(204);
 INSERT INTO "Warehouse" VALUES(205);
@@ -530,7 +530,7 @@ CREATE TABLE BookDescription (
 isbn CHAR(10) NOT NULL,
 description VARCHAR(4095),
 
-FOREIGN KEY(isbn) REFERENCES Book(isbn),
+FOREIGN KEY(isbn) REFERENCES Book(isbn) on delete cascade,
 PRIMARY KEY(isbn)
 );
 INSERT INTO "BookDescription" VALUES('0000000001','A sample description');
@@ -665,7 +665,7 @@ CREATE TABLE BookCategory (
 isbn CHAR(10) NOT NULL,
 category VARCHAR(254),
 
-FOREIGN KEY(isbn) REFERENCES Book(isbn),
+FOREIGN KEY(isbn) REFERENCES Book(isbn) on delete cascade,
 PRIMARY KEY(isbn)
 );
 INSERT INTO "BookCategory" VALUES('0000000001','Mythology');
@@ -801,7 +801,7 @@ CREATE TABLE creditcard
      cc_num CHAR(16) NOT NULL,
      eid    INT NOT NULL,
      PRIMARY KEY(eid),
-     FOREIGN KEY(eid) REFERENCES entity(id)
+     FOREIGN KEY(eid) REFERENCES entity(id) on delete cascade
   );
 INSERT INTO "creditcard" VALUES('1111222233334444',121);
 INSERT INTO "creditcard" VALUES('1111222233334444',122);
@@ -1083,9 +1083,9 @@ CREATE TABLE customerorder
      eto           INT NOT NULL,
      arrival       TIMESTAMP,
      transactionid NOT NULL,
-     FOREIGN KEY(transactionid) REFERENCES monetarytransaction(id),
-     FOREIGN KEY(efrom) REFERENCES entity(id),
-     FOREIGN KEY(eto) REFERENCES entity(id),
+     FOREIGN KEY(transactionid) REFERENCES monetarytransaction(id) on delete cascade,
+     FOREIGN KEY(efrom) REFERENCES entity(id) on delete cascade,
+     FOREIGN KEY(eto) REFERENCES entity(id) on delete cascade,
      PRIMARY KEY(id)
   );
 INSERT INTO "customerorder" VALUES(1,204,'10/1/2010 12:12:12',121,'10/5/2010 10:20:34','1');
@@ -1115,8 +1115,8 @@ CREATE TABLE monetarytransaction
      amount    INT NOT NULL DEFAULT(0),
      epayer    INT NOT NULL,
      epayee    INT NOT NULL,
-     FOREIGN KEY(epayer) REFERENCES entity(id),
-     FOREIGN KEY(epayee) REFERENCES entity(id),
+     FOREIGN KEY(epayer) REFERENCES entity(id) on delete cascade,
+     FOREIGN KEY(epayee) REFERENCES entity(id) on delete cascade,
      PRIMARY KEY(id)
   );
 INSERT INTO "monetarytransaction" VALUES(1,'8/1/2014 14:54:54',7.99,121,204);
@@ -1152,7 +1152,7 @@ CREATE TABLE entity
      postalcode VARCHAR(50),
      address    VARCHAR(255),
      PRIMARY KEY(id)
-     FOREIGN KEY(nameid) REFERENCES names(id)
+     FOREIGN KEY(nameid) REFERENCES names(id) on delete cascade
   );
 INSERT INTO "entity" VALUES(1,1,'123456789','author@example.com','','','','','','');
 INSERT INTO "entity" VALUES(2,2,'123456790','author@example.com','','','','','','');
@@ -1406,7 +1406,7 @@ CREATE TABLE book
      pid    INT,
      year   CHAR(4),
      length INT,
-     FOREIGN KEY(pid) REFERENCES publisher(eid),
+     FOREIGN KEY(pid) REFERENCES publisher(eid) on delete cascade,
      PRIMARY KEY(isbn)
   );
 INSERT INTO "book" VALUES('0000000001',19.99,'Linus Damocles',157,'2014',364);
@@ -1569,3 +1569,4 @@ and ba.isbn = t.isbn
 and BA.nameid = A.id
 group by ba.nameid;
 COMMIT;
+PRAGMA foreign_keys=ON;
